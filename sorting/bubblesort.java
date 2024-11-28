@@ -25,5 +25,6 @@ public class bubblesort {
 /*it is not an efficient way of  sorting the actual time complexity is
  * n**2 which we know not good 
  * 
+ * but in the best case we can reduce the time complexity to o(n) by introducing a flag in between them
  * but easy to understand for a beginner 
  */
