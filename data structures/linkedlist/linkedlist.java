@@ -114,6 +114,21 @@ public class linkedlist {
         pre.next = current.next;
     }
 
+
+    void reverse(){
+        Node pre = null;
+        Node current = head;
+        Node temp = null;
+        while(current!=null){
+            temp=current.next;
+            current.next = pre;
+            pre =current;
+            current = temp;
+            
+        }
+       head = pre;
+    }
+
     public static void main(String[] args) {
         linkedlist o = new linkedlist();
         o.insertatend(1);
@@ -125,6 +140,8 @@ public class linkedlist {
         o.deleteatpos(3);
         o.deleteatend();
         o.deleteatfirst();
+        o.display();
+        o.reverse();
         o.display();
 
     }

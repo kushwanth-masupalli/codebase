@@ -1,33 +1,28 @@
 
 public class circularqueue {
 
-    int[] arr = new int[6];
-    int front = -1;
     int rear = -1;
+    int front = -1;
+    int[] arr = new int[6];
     int size = arr.length;
 
-    void insert(int a) {
-        // Check if the queue is full
-        if ((rear + 1) % size == front) {
-            System.out.println("Queue is full");
-            return;
-        }
-        if (rear == -1) { // If queue is initially empty
-            front = 0;
-            rear = 0;
-            arr[rear] = a;
+    void insert(int data) {
+        if (front == -1) {
+            front++;
+            rear++;
+            arr[rear] = data;
+        } else if ((rear + 1) % size == front) {
+            System.out.println("the queue is full");
         } else {
             rear = (rear + 1) % size;
-            arr[rear] = a;
+            arr[rear] = data;
         }
     }
 
     void delete() {
-        if (front == -1) { // Queue is empty
-            System.out.println("Queue is empty");
-            return;
-        }
-        if (front == rear) { // Only one element was present
+        if (front == -1) {
+            System.out.println("the queue is empty");
+        } else if (front == rear) {
             front = -1;
             rear = -1;
         } else {
@@ -37,39 +32,31 @@ public class circularqueue {
 
     void display() {
         if (front == -1) {
-            System.out.println("The queue is empty");
+            System.out.println("the queue is empty");
             return;
         }
-
-        System.out.println("Queue elements are:");
-        int i = front;
+        int temp = front;
         while (true) {
-            System.out.print(arr[i] + " ");
-            if (i == rear) {
+            System.out.println(arr[temp]);
+            if (temp == rear) {
                 break;
-
             }
-            i = (i + 1) % size;
+            temp = (temp + 1) % size;
         }
-        System.out.println();
+
     }
 
     public static void main(String[] args) {
-        circularqueue o = new circularqueue();
-        o.insert(34);
-        o.insert(6);
-        o.insert(77);
-        o.insert(55);
-        o.insert(44);
-        o.insert(99);
-        o.delete();
-        o.delete();
-        o.delete();
-        o.delete();
-        o.delete();
-        o.delete();
-        o.insert(4);
-        o.display();
-
+        circularqueue cq = new circularqueue();
+        cq.insert(2);
+        cq.insert(44);
+        cq.insert(34);
+        cq.insert(44);
+        cq.insert(44);
+        cq.insert(4344);
+        cq.delete();
+        cq.insert(44444);
+        cq.display();
     }
+
 }
