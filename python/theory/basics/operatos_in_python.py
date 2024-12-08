@@ -102,3 +102,20 @@ print(e is f )
 #  same object in memory.
 # It checks if the two variables refer to the same object,
 #  not if they have the same value
+
+
+#membership operators in python
+#there are two are member ship operators in python |in and not in|
+name = "kush"
+print("k"  in name )
+l= [1,8,8,89,7,5]
+print(1 in l)
+
+
+#logical operators
+#as same as| and gate, or gate,not gate |
+a=5
+b=6
+print(a<10 and b> 11)
+a=True
+print(not(a)) 

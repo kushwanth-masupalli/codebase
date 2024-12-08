@@ -9,4 +9,5 @@ tuple=(1,2,3,4,8)
 
 print(tuple)
 tuple = (5,)
+print(tuple[0])
 print(type(tuple))
