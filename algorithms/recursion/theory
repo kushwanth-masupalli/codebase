@@ -1,0 +1,21 @@
+recursion == is a programming and mathematical concept where a
+function calls itself to solve a problem , breaking it into
+smaller , identical problems until a simple "base case"
+is met , stopping the process
+
+
+steps to solve a problem using recursion
+
+1) define the base case
+2) define the recursive case  -- with lesser input
+3) ensure the recursion terminates
+
+
+How to identify that it is a recursion based question
+
+1) Look for "all possible ways" or "generate"
+2) check if it can be broken into smaller similar problems
+          - factorial,fibonacci,factorial
+3) identify decisions at each step
+          - include/exclude  or move left/right/down/up
+4) check for structure like decision tress.....
