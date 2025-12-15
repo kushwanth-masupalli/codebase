@@ -1,0 +1,5 @@
+/*  class :a class is a template used to create objects.it defines the structure and
+ behaviour of the objects by  specifying feilds variables  to store data and methods to perform actions
+ *  Oject : is the istance of the class.it is the real world entity that represents specific implementation of class
+ * 
+*/

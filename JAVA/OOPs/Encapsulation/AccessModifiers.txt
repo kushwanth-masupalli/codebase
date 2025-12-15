@@ -1,0 +1,8 @@
+Encapsulation is acheived through this access modifiers
+
+Modifier    | Same Class | Same Package | Subclass (diff pkg) | Other Classes
+------------|------------|--------------|---------------------|--------------
+public      | Yes        | Yes          | Yes                 | Yes
+protected   | Yes        | Yes          | Yes                 | No
+default     | Yes        | Yes          | No                  | No
+private     | Yes        | No           | No                  | No

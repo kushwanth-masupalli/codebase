@@ -1,0 +1,18 @@
+Wrapper classes are object representations of Java's primitive types.
+
+Primitive Type	Wrapper Class
+byte	     Byte
+short	    Short
+int 	    Integer
+long	    Long
+float	    Float
+double	    Double
+char	    Character
+boolean 	Boolean
+
+✅ Purpose:
+To treat primitive values as objects.
+
+Useful in collections (like ArrayList, HashMap) which require objects, not primitives.
+
+Helpful for utility methods (e.g., Integer.parseInt()).
