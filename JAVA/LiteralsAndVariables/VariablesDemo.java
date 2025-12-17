@@ -3,7 +3,8 @@ package LiteralsAndVariables;
 public class VariablesDemo {
     
 
-    //A variable is a named memory location used to store data that can change during the execution of a program.
+    //A variable is a named memory location used to store data that can change during
+    // the execution of a program.
     // 1. Static variable (Class-level, shared across all objects)
     static int staticVar = 100;
 
@@ -17,6 +18,10 @@ public class VariablesDemo {
         System.out.println("Instance Variable: " + instanceVar);
         System.out.println("Static Variable: " + staticVar);
         System.out.println("Local Variable: " + localVar);
+    }
+
+    void add(int a, int b){        // 4 . parameters
+         System.out.println(a+b);
     }
 
     public static void main(String[] args) {
@@ -57,3 +62,36 @@ public class VariablesDemo {
         System.out.println("Access static variable in main: " + staticVar);
     }
 }
+
+/*   there are four types of variable
+
+   1) Local variable
+
+      * declared inside methods , constructors or blocks
+      * created when the block starts
+      * destroyed when the block ends
+      * no default value
+
+   2) Instance variable
+      * declared inside class but outside methods
+      * belong to object
+      * have default values
+      * Each object gets its own copy
+      * Have default values
+
+    3) Static variables
+      * declared using static
+      * belong to the class
+      * one copy shared by all objects
+      * stored in method area
+      * have default values
+
+    4) Parameters
+       * variables passed to methods or constructors
+       * act like local variables
+       * scope limited to the method
+
+
+
+
+* */

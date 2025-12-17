@@ -21,6 +21,9 @@ public class Literals {
         // 2. Floating-point literals
         float floatVal = 10.5f;         // must have 'f' or 'F'
         double doubleVal = 20.99;       // default is double
+        System.out.printf("%.2f",floatVal);
+
+
 
         System.out.println("Floating-point Literals:");
         System.out.println("Float: " + floatVal);
