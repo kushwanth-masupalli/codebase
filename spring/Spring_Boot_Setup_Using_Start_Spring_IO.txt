@@ -1,0 +1,245 @@
+SPRING BOOT PROJECT SETUP USING start.spring.io
+=========================================
+
+This document explains, step by step, how to create and set up a Spring Boot project using https://start.spring.io.
+Each option on the website is explained clearly so beginners can understand WHY and WHEN to use it.
+
+--------------------------------------------------
+1. OPEN SPRING INITIALIZR
+--------------------------------------------------
+Open your browser and go to:
+https://start.spring.io
+
+This website is called Spring Initializr.
+It generates a ready-to-use Spring Boot project for you.
+
+--------------------------------------------------
+2. PROJECT SECTION
+--------------------------------------------------
+
+Option: Project
+Choices:
+- Maven
+- Gradle
+
+Choose: Maven
+
+WHY?
+- Maven is easier for beginners
+- It has a standard structure
+- Dependency management is simple
+- Most Spring tutorials use Maven
+
+--------------------------------------------------
+3. LANGUAGE SECTION
+--------------------------------------------------
+
+Option: Language
+Choices:
+- Java
+- Kotlin
+- Groovy
+
+Choose: Java
+
+WHY?
+- Java is the most widely used language with Spring
+- Best documentation and community support
+- Ideal for backend development and interviews
+
+--------------------------------------------------
+4. SPRING BOOT VERSION
+--------------------------------------------------
+
+Option: Spring Boot
+Example: 3.2.x (default)
+
+Choose: Default stable version
+
+WHY?
+- Stable and production-ready
+- Works well with Java 17+
+- Avoid SNAPSHOT or M1 unless required
+
+--------------------------------------------------
+5. PROJECT METADATA
+--------------------------------------------------
+
+Group:
+Example: com.example
+Meaning:
+- Represents your organization or domain
+- Reverse domain name convention
+
+Artifact:
+Example: demo
+Meaning:
+- Name of your project
+- Also becomes the JAR file name
+
+Name:
+Example: demo
+Meaning:
+- Application name
+
+Description:
+Example:
+Demo project for Spring Boot
+
+Package Name:
+Example:
+com.example.demo
+
+WHY THIS MATTERS?
+- Package name defines your base Java package
+- All classes should stay under this package
+
+--------------------------------------------------
+6. PACKAGING
+--------------------------------------------------
+
+Option: Packaging
+Choices:
+- Jar
+- War
+
+Choose: Jar
+
+WHY?
+- Standalone application
+- Embedded Tomcat server
+- Easy to run using java -jar
+
+--------------------------------------------------
+7. JAVA VERSION
+--------------------------------------------------
+
+Option: Java
+Choices:
+- 17
+- 21 (if available)
+
+Choose: Java 17
+
+WHY?
+- Long Term Support (LTS)
+- Recommended by Spring Boot
+- Used in production systems
+
+--------------------------------------------------
+8. DEPENDENCIES
+--------------------------------------------------
+
+Click "Add Dependencies"
+
+Common choices for backend:
+
+1. Spring Web
+   - For REST APIs
+   - Enables @RestController, @GetMapping, etc.
+
+2. Spring Data JPA
+   - For database interaction
+   - Uses Hibernate internally
+
+3. H2 / MySQL / PostgreSQL Driver
+   - Choose based on your database
+
+4. Spring Security (optional)
+   - For authentication and authorization
+
+For BEGINNER PROJECT:
+Choose:
+- Spring Web
+- Spring Data JPA
+- H2 Database
+
+--------------------------------------------------
+9. GENERATE PROJECT
+--------------------------------------------------
+
+Click the "Generate" button.
+
+Result:
+- A ZIP file will be downloaded
+
+Extract the ZIP file.
+
+--------------------------------------------------
+10. PROJECT STRUCTURE EXPLAINED
+--------------------------------------------------
+
+After extracting, you will see:
+
+project-name/
+│
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/example/demo/
+│   │   │       └── DemoApplication.java
+│   │   └── resources/
+│   │       ├── application.properties
+│   │       └── static/
+│   │       └── templates/
+│   └── test/
+│
+├── pom.xml
+└── mvnw
+
+--------------------------------------------------
+11. IMPORTANT FILES
+--------------------------------------------------
+
+DemoApplication.java
+- Main entry point
+- Contains @SpringBootApplication
+- Starts the Spring context
+
+application.properties
+- Used for configuration
+- Database URL, port number, etc.
+
+pom.xml
+- Dependency management file
+- Contains Spring Boot starters
+
+--------------------------------------------------
+12. RUNNING THE APPLICATION
+--------------------------------------------------
+
+METHOD 1: IDE (IntelliJ / Eclipse)
+- Open project
+- Right-click DemoApplication.java
+- Click Run
+
+METHOD 2: TERMINAL
+Go to project directory and run:
+mvn spring-boot:run
+
+--------------------------------------------------
+13. VERIFY APPLICATION
+--------------------------------------------------
+
+Open browser:
+http://localhost:8080
+
+If no controller is defined, you may see:
+Whitelabel Error Page (this is NORMAL)
+
+--------------------------------------------------
+14. NEXT STEPS (RECOMMENDED)
+--------------------------------------------------
+
+1. Create Controller package
+2. Create REST endpoints
+3. Connect database
+4. Learn annotations:
+   - @RestController
+   - @Service
+   - @Repository
+   - @Autowired
+
+--------------------------------------------------
+END OF DOCUMENT
+--------------------------------------------------
