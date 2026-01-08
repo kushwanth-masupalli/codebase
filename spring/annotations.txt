@@ -1,0 +1,17 @@
+Annotation          | Scope         | Purpose
+--------------------|---------------|----------------------------------------
+@Controller         | Class         | Mark as Spring MVC controller (returns views)
+@RestController     | Class         | Spring MVC + @ResponseBody (returns JSON)
+@RequestMapping     | Class/Method  | Map HTTP requests to handler methods
+@GetMapping         | Method        | Map GET requests (retrieve data)
+@PostMapping        | Method        | Map POST requests (create data)
+@PutMapping         | Method        | Map PUT requests (update data)
+@DeleteMapping      | Method        | Map DELETE requests (delete data)
+@PathVariable       | Parameter     | Extract value from URI path
+@RequestParam       | Parameter     | Extract query string parameter
+@RequestBody        | Parameter     | Parse JSON/XML request body
+@ResponseBody       | Method/Class  | Serialize return value to response body
+@Component          | Class         | Generic Spring-managed bean
+@Service            | Class         | Service layer bean (business logic)
+@Repository         | Class         | Data access layer bean (database access)
+@Autowired          | Field/Method  | Automatic dependency injection

@@ -1,4 +1,4 @@
-package the_robust_18.demo_for_dto;
+package therobust18.annotations;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,11 +11,10 @@ import org.springframework.boot.jdbc.autoconfigure.DataSourceAutoConfiguration;
 				HibernateJpaAutoConfiguration.class
 		}
 )
-
-public class DemoForDtoApplication {
+public class AnnotationsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoForDtoApplication.class, args);
+		SpringApplication.run(AnnotationsApplication.class, args);
 	}
 
 }
