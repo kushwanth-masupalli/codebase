@@ -1,0 +1,111 @@
+DTOs in Spring Boot
+
+
+DTOs (Data Transfer Objects) are objects used to carry data between different layers of an application.
+ They're a crucial design pattern in Spring Boot development.
+
+
+Key Characteristics:
+Purpose: DTOs encapsulate data that needs to be transferred between:
+
+Client and Server (API requests/responses)
+Service layers
+Database layer and business logic
+
+
+Structure: Usually plain Java classes with:
+
+Private fields
+Getters and Setters
+Constructors
+No business logic
+
+Benefits:
+
+Encapsulation: Hide internal entity structure
+Flexibility: Transfer only necessary data
+Security: Don't expose sensitive database fields
+Decoupling: Separate API contracts from database models
+Performance: Reduce over-fetching of data
+
+
+Simple Example:
+
+
+Java
+// Entity (Database Model)
+@Entity
+public class User {
+    @Id
+    private Long id;
+    private String username;
+    private String email;
+    private String password; // Sensitive - don't expose
+    private LocalDateTime createdAt;
+}
+
+// DTO (API Response)
+public class UserDTO {
+    private Long id;
+    private String username;
+    private String email;
+    
+    // Constructors
+    public UserDTO() {}
+    
+    public UserDTO(Long id, String username, String email) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+    }
+    
+    // Getters and Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    
+    public String getUsername() { return username; }
+    public void setUsername(String username) { this.username = username; }
+    
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+}
+
+
+
+
+Usage in Controller:
+Java
+@RestController
+@RequestMapping("/users")
+public class UserController {
+    
+    @Autowired
+    private UserService userService;
+    
+    @GetMapping("/{id}")
+    public ResponseEntity<UserDTO> getUser(@PathVariable Long id) {
+        UserDTO userDTO = userService.getUserById(id);
+        return ResponseEntity. ok(userDTO);
+    }
+    
+    @PostMapping
+    public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO) {
+        UserDTO created = userService.createUser(userDTO);
+        return ResponseEntity. status(HttpStatus.CREATED).body(created);
+    }
+}
+
+
+
+Common Tools for DTO Conversion:
+MapStruct: Annotation-based mapping (compile-time safety)
+ModelMapper: Convention-based mapping
+Manual mapping: Simple and explicit
+Example with MapStruct:
+Java
+@Mapper
+public interface UserMapper {
+    UserDTO toDTO(User user);
+    User toEntity(UserDTO userDTO);
+}
+DTOs are essential for building clean, secure, and maintainable Spring Boot applications!
