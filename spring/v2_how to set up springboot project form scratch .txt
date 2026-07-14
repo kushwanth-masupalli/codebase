@@ -1,0 +1,95 @@
+SPRING BOOT PROJECT CREATION GUIDE
+
+Go to:
+https://start.spring.io
+
+Configure Project Settings:
+
+Select the following options:
+
+Project: Maven
+
+Spring Boot Version: Latest Stable
+
+Name: (Enter your project name)
+
+Description: (Enter project description)
+
+Packaging: Jar
+
+Java Version: 17 or 21 (LTS recommended)
+
+Dependencies: Add required dependencies
+
+
+
+
+Packaging Options Explained:
+
+Jar:
+
+Used for standalone applications
+
+Comes with embedded server (Tomcat)
+
+Can run independently using: java -jar filename.jar
+
+Recommended for most applications
+
+War:
+
+Used when deploying to an external server
+
+Example: Apache Tomcat installed separately
+
+Not commonly used in modern Spring Boot projects
+
+
+
+Add Dependencies:
+
+Spring Web:
+
+Used for building web applications and REST APIs
+
+Provides Spring MVC support
+
+Includes embedded Tomcat server
+
+Lombok:
+
+Reduces boilerplate code
+
+Automatically generates getters, setters, constructors, and other utility methods
+
+Spring Data JPA:
+
+Used for database operations
+
+Simplifies CRUD functionality
+
+Uses Hibernate internally for ORM mapping
+
+H2 Database:
+
+Lightweight in-memory database
+
+Used for development and testing
+
+No separate installation required
+
+Note:
+You can also add dependencies manually from Maven Central website
+and include them inside the pom.xml file.
+
+Generate Project:
+
+Click the Generate button
+
+A ZIP file will be downloaded
+
+Extract the ZIP file
+
+Open the project in your preferred IDE (IntelliJ, Eclipse, VS Code)
+
+The project is now ready for development.

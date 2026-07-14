@@ -28,25 +28,29 @@ public class BFS {
         bfsTraversal(n,arr,start);
     }
 
-    private static void bfsTraversal(int n, ArrayList<ArrayList<Integer>> arr,int start) {
-         boolean [] visited = new boolean[n+1];
-         Queue<Integer> queue = new LinkedList<>();
-         queue.offer(start);
-         visited[start] = true;
-         while(!queue.isEmpty()){
-             int curr = queue.poll();
-             System.out.println("visited "+curr);
+    private static void bfsTraversal(int n, ArrayList<ArrayList<Integer>> arr, int start) {
 
-             for(int i : arr.get(curr)){
-                 if(!visited[i]){
-                     queue.offer(i);
-                     visited[i] = true;
-                 }
-             }
+    boolean[] visited = new boolean[n + 1];
+    Queue<Integer> queue = new LinkedList<>();
 
-         }
+    queue.offer(start);
+    visited[start] = true;   // important
 
+    while (!queue.isEmpty()) {
+        int curr = queue.poll();
+
+        System.out.println("visited " + curr);
+
+        for (int i : arr.get(curr)) {
+            if (!visited[i]) {
+                visited[i] = true;
+                queue.offer(i);
+            }
+        }
     }
 }
+
+    }
+
 
 

@@ -1,0 +1,29 @@
+Docker is a tool that's lets you package an application and everything it needs (code, runtime, libraries , configs) into a single unit called a container , so it runs the same way everywhere. 
+
+if it works on you laptop  => docker says => then it will work everywhere
+
+-> the core idea : 
+    1) you write your app
+    2) docker wraps it with : 
+            os level dependencies 
+            libraries 
+            environment settings 
+    3) that bundle = container 
+    4) run that container on any machine with docker -> same behavior 
+
+
+with docker :
+
+1) one environment
+2) one command to run 
+3) no dependency hell
+
+key terms to know : 
+
+1) image  = a blueprint , read -only , example like node:18 , python 3.10 
+            like a class in OOP
+2) container = a running instance of an image 
+               like an object created from a class 
+3) docker file  = a recipe to build an image 
+
+4) docker engine  = the thing that actually runs 
