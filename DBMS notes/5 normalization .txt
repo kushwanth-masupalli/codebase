@@ -1,0 +1,97 @@
+ANAMOLIYS 
+
+1) Insertion anomaly  = it occurs when it is not possible to insert data into the database because some required information is missing or incomplete 
+ex : if a database every record to have a primary key , and no value is provided for that key, the record cannot be inserted into the table ;
+
+2) Deltetion anomaly  = it occurs when deleting a record unintentionally results in the loss of other important data  .
+
+ex : a database contians information about customers and their orders, deleting a customer record may also delete all the orders associated with that cusomter , leading to loss of valuable information  
+
+3) Update anomaly  =  an update anomaly occurs when modifying data in a database leads to 
+inconsitencies because the same data is stored in mulitple places 
+
+ex : if a database contains employee salary information in multiple records , and the salary is updated in one record but not in others , it may result in incorrect caluclatoins and reporting . 
+
+
+these anomalies can be removed with the process of normalization , which generally splits the database which results in reducing the anomalies in the database .
+
+
+NORMAL FORMS 
+
+1) 1NF  = first normal form 
+          every column contains atomic values,with no repeating groups or mulit valued attributes  and each row is unique 
+
+each cell contais only one value 
+
+1NF = ATOMIC VALUES 
+
+2) 2NF = second normal form =  eliminating partial dependency 
+
+a relation is 2nf if it satisfies 1NF and additionaly contains no partial dependency exits, meaning ever no prime attribute must depend on the entire primary key , nost just part of it 
+
+ex : for a composite key ( studentid,coursid) if the studnetname depends only on studentId and not on the entire key , it voilates 2NF , to Normalize move studnetname into seperaet table where it depends only on studentId
+
+
+prime  = part of the candidate key 
+non prime = not part of the candidate key 
+
+
+
+3) 3NF = elimination transitive dependecny 
+
+a realation is 3NF if it satisfies 2NF and addtoinally , there are no transitive dependency
+in simpler terms , non-prime attributes should not depend on other non-prime attributes 
+
+ex : consider a table with ( studentId,courseId,instrutor) if the instrucotr depends on courseID and courseId depends on studentId , the instructor indireclty depends on studentid which violates 3NF to resolve this, place instructor in a separate table linked by courseId
+
+4) Boyce -codd Normal form ( BCNF) = the strongest form of 3NF 
+
+is a stricter version of 3NF where for every non trivial functional dependency (x->y) x must be superkey 
+
+ex: If a table has a functional dependency (StudentId, CourseId) → Instructor, and (StudentId, CourseId) is NOT a superkey, then the dependency violates BCNF.
+5) Fourth Normal Form (4NF) : removing mulit valued dependenceis 
+
+a table is 4NF if it is a BCNF and has no multi values dependencies . a multi valued dependency occurs when one attribute determines another and both attributes are indepdent of all other attribute in the table . 
+
+ex : consider a table where (studnetId,langugea,hobby) are attribute . if a student can have mulitple hobbies and langugaes , a multivalued dependencey exist. to resolve this, split the table into separate tables for languagea and hobbies
+
+
+6) fifth normal form : Elimination join dependency 
+
+5NF is achieved when a table is in 4NF and all jion dependencies are removed this form ensures that every table is fully decomposed into smaller tables that are logically connected without losing informatoin
+
+ex: if a table contains ( studentID, cours, instrutor) and there is a dependecny where all combinations of these cloumsn are needed for a specific relationship you would split them into smaller table to remove redundany ..
+
+
+
+Denormalizaiotn = is the opposite of normalization 
+
+instead of removing redundancy , we intentionally introduce some redudancy to improve read performance 
+
+for example instaed of joining : 
+
+order->customers 
+
+
+we might sotore 
+
+orders
+----------------
+orderId
+CustomterId
+CustomerName
+
+
+now customername is duplicated 
+why because reading the order and customer information may require fewer joins 
+
+
+
+
+
+
+
+
+
+ 
+

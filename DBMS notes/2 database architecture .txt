@@ -1,0 +1,50 @@
+1) Database Architecutre ( 3-schema architecture) 
+
+the goal of the database architecture is to seperate waht the users see from how data is acutally stored . 
+
+it has 3 levels : 
+
+1) external views : is what the   user sees different users can have different view of the same database like an employee can see less no of columns only what necessary but a higher level person can  see extra column like the performance or something like that 
+
+2) logical View : this describe the entire database strcutre 
+
+it defines tables, columns, relationshhips, constraints
+
+3) physical level : this is the actual storage 
+
+this is whole done by dbms no intervention of programmer need to be here
+
+why  three layers : 
+
+lets say we shifted from hard Disk to SSD 
+
+we should not see any changes in the existing application this is only happend because of the isloation of the layers which is called data independence
+
+chagnes at one level should not unnecessarily affect the other levels.
+
+schema is like the blueprint or design of the database .
+instance is the actual data stored at  a particular moment .
+
+
+DATABASE LANGUAGES
+
+1) DDL (data definition language ) 
+
+create , alter,drop,truncate,rename
+
+2) DML ( data manipulation language) 
+
+used to manipulate the data inside tables
+insert , updata, delete
+
+3) DQL (data query languge) 
+select
+
+4) DCL ( data control language) 
+
+grant , revoke 
+
+5) TCL ( transaction control language) 
+
+used to control transactions
+

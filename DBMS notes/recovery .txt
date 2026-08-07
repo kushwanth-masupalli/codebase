@@ -1,0 +1,24 @@
+1. Log-Based Recovery
+
+Before modifying actual database data, the DBMS records information about the operation in a log stored on durable storage.
+
+2. UNDO vs REDO
+
+
+UNDO = Reverse changes made by transactions that did not successfully commit.
+
+REDO = Reapply changes from a transaction that committed, but whose updated database pages may not have reached disk before the crash.
+
+3. Checkpointing
+
+Imagine the database has been running for 10 hours and has generated a huge log:
+
+If the database crashes, recovery might have to examine a huge amount of history.
+
+A checkpoint periodically records a recovery point/state.
+
+Conceptually:After a crash, the recovery process can often avoid processing irrelevant history before the checkpoint.
+
+4) Shadow paging = 
+Shadow paging is an alternative recovery technique that doesn't rely on traditional undo/redo logging.
+

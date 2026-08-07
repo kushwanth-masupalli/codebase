@@ -1,0 +1,191 @@
+SQL 
+---------------------------------------------------------------------------------------------
+
+select  = is used to retrive data from one or more tables 
+
+ex:  select name , salary from employees;
+
+where  = filters individual rows before grouping , aggregatoin 
+
+select * from employees where salary > 40000;
+
+select * from employee where salary > 30000 AND department = "IT";
+
+order by  = sorts the result
+
+select * from employees order by salary desc ;
+defulat is asc ;
+
+limit = restricts the number of rows returned 
+
+OFFSET
+
+Controls how many rows to skip first.
+
+SELECT *
+FROM Employee
+LIMIT 5 OFFSET 10;
+
+→ Skip the first 10 rows, then return the next 5.
+
+
+select * from employees order by salary DESC limit 4; this will give top 4 empolyee salaries
+
+where manager_id = null
+
+this not work here because null represents unkkonw/missing values and normal equality so we use 
+
+where manager_id is null
+
+
+JOINS
+
+INNER JOIN = return only the rows having a match in both tables 
+
+select e.name , d.department from employee e 
+INNER JOIN department d 
+ON e.dept_id =d.id;
+
+
+LEFT JOIN = return all rows from left table and matching rows from the right 
+
+RIGHT JOIN = return all rows from right table and matching rows form the left
+
+FULL OUTER JOIN = return matching rows + unmatched rows from both tables 
+
+SELF JOIN  = a table joined with itself 
+
+ex : employees and their managers 
+
+select e.name as employee , m.name as manager 
+from Employee e 
+LEFT JOIN EMployee m 
+on e.manager_id = m.id;
+
+
+
+
+
+GROUP BY and HAVING 
+
+GROUP BY combines rows having the same value into groups 
+
+select departmen,AVG(salary) from emplyoee
+group by department ;
+
+where vs having 
+
+where = filters rows before grouping 
+having = filters groups after grouping 
+
+
+SELECT department, AVG(salary)
+FROM Employee
+GROUP BY department
+HAVING AVG(salary) > 50000;
+
+
+AGGREGATE FUNCTIONS 
+
+COUNT()
+SUM()
+AVG()
+MIN()
+MAX()
+
+
+
+SUBQUERIES 
+
+a subquery is a query inside another SQL query ;
+
+select * from employee 
+where salary > (
+
+   select avg(salary)
+ 
+   from employee );
+
+
+IN 
+
+select * from employee 
+where department_id IN (
+ select id from departmetn where location = 'banglroe');
+
+EXISTS 
+
+IN compares a value against a set of values returned by the subquery, while EXISTS checks whether at least one matching row exists.
+
+
+WINDOW FUNCTIONS 
+
+A window function performs calculations across related rows without collapsing them into one row.
+
+
+RANK()
+100 → 1
+100 → 1
+90  → 3
+80  → 4
+
+Ties receive the same rank, and the next rank is skipped.
+
+DENSE_RANK()
+100 → 1
+100 → 1
+90  → 2
+80  → 3
+
+No gaps.
+
+ROW_NUMBER()
+
+Always assigns a unique sequential number:
+
+100 → 1
+100 → 2
+90  → 3
+80  → 4
+Interview question: RANK vs DENSE_RANK vs ROW_NUMBER
+
+RANK: ties + gaps
+DENSE_RANK: ties + no gaps
+ROW_NUMBER: no ties; every row gets a unique number
+
+
+
+SELECT name,
+       department,
+       salary,
+       RANK() OVER (
+           PARTITION BY department
+           ORDER BY salary DESC
+       ) AS rank
+FROM Employee;
+
+
+
+Stored Procedures vs Functions
+Stored Procedure
+
+A stored procedure is a stored program in the database that can perform operations and may return result sets/output parameters depending on the DBMS.
+
+Example conceptually:
+
+CREATE PROCEDURE GetEmployees()
+BEGIN
+    SELECT * FROM Employee;
+END;
+
+Call it:
+
+CALL GetEmployees();
+
+Procedures are commonly used for:
+
+Multi-step database operations
+Data modification
+Business logic close to the database
+Transactions
+

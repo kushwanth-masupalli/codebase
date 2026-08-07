@@ -1,0 +1,37 @@
+relation = entity 
+tuple = row
+attribute = column 
+
+degree = no of columns
+cardinaly = no of rows 
+
+KEYS : 
+
+1 ) Super Key  = is any combination of columns that uniquely identifies a row. 
+2) Candidate Key  = is the smallest possible super key 
+3) Primary Key = is the candidate key that we choose to identify rows uiniquely 
+
+
+Super Key
+   ↑
+Candidate Key (minimal)
+   ↑
+Primary Key (chosen candidate)
+
+
+4) Foreign Key 
+
+a key that is a column in the current entity but a primary key in someother entity 
+we use this key to create relationships between entities 
+
+
+INTEGRITY CONSTRIANTS 
+
+
+1) DOMAIN constraint = a cloumn should contain only valid values in the sense if a column is defined a int in the schema it can only store only interger not any other
+
+2) ENTITY Integrity  = primay key cannot be null
+3) Referential Integrity = foreign key must refer to  an existing primary key 
+4) Key  Constraint  = primay key values must be unique 
+
+

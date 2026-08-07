@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-
-metadata:
-  name: backend-config
-  namespace: medicare
-
-data:
-  SPRING_DATA_MONGODB_URI: mongodb://mongodb:27017/khospital

@@ -1,0 +1,173 @@
+VPC 
+
+a vpc is your own isolated virutal network inside AWS where you launch AWS resources like EC2 ,RDS , Load Balancers , Lambda etc ..
+
+thik of it as a your own private data center inside AWS .
+
+without VPC - any server could potentially communicate with any other 
+
+with VPC - complete isolation 
+
+why do we need VPC 
+
+main reasons : 
+
+1) Security 
+2) Isolation 
+3) Control over networking
+4) Custom IP address
+5) Public and private servers
+6) firewalls 
+7) routing 
+
+almost every aws service is deployed inside a VPC
+
+CIDR Block 
+
+when creating a VPC , AWS asks for a CIDR block . 
+example 10.0.0.0/16
+
+lets understand it 
+
+a cidr block define the ip address range available inside your VPC 
+
+ex : 10.0.0.0/16
+
+mean 10.0.0.1
+     10.0.0.2
+     10.0.0.3
+     .....
+     .....
+     .....
+     10.0.255.254
+
+ around 65536 ip addresses are available 
+your ec2 instances will get ips form this range
+
+
+subnets 
+
+A VPC is too large to manage one network 
+
+so we divide it into smaller networks 
+
+vpc 
+ 
+10.0.0.16
+
+----------------------
+10.0.1.0/24
+10.0.2.0/24
+10.0.3.0/24
+10.0.4.0/24
+
+each smaller network is called a subnet 
+
+why multiple subnets 
+
+imagine everything is in one subnt 
+ 
+webserver, redis,loadbalaner ...no organization 
+
+instead we create two subnet one is public and another one is private in public we will keep the web servers , load balancers and in private we will keep the databases,redis,kafka
+much cleaner and secure
+
+public subnet : 
+   a subnet connected to the internet 
+   ex a web server or an application load balancer 
+
+private subnet :  
+   no direct internet access 
+   ex RDS, redis,kafka , internal application servers .
+
+Internet Gateway :
+how does a public subnet will reach the internet 
+an internet gateway is attached to the VPC and allows communication with the internet	
+
+without an igw even if you have a public ip for ec2 you can't acess the ec2 or anything 
+
+Route Tables
+
+every subnet has route table 
+a route table tells aws : where should the packets go 
+
+ex 
+
+Destination        Target
+
+10.0.0.0/16       Local
+
+0.0.0.0/0         Internet Gateway
+
+yeah the above example sucks listen it is actually simple lets say if a user from outside the source he came from is internet that is 0.0.0.0.0/0 so it will be routed to the internet gateway when it reaches the vpc and when the source is some internal ip then the route table will send it to the local 
+
+
+Public Route Table
+Destination          Target
+
+10.0.0.0/16          Local
+
+0.0.0.0/0            IGW
+
+
+Private Route Table
+
+Destination          Target
+
+10.0.0.0/16          Local
+
+
+NAT Gateway 
+
+suppose your backend server is in a private subnet but it still needs to downlod any java update or pull docker images or install maven depedencise or call external apis so you will attach a nat gateway 
+
+the nat gateway allows outbound internet access only 
+the internet cannot initate connections back to the private instance 
+
+Security Groups
+
+think of security groups as a firewall for an instance 
+ex for springboot server inbound 8080 allowed 
+   for database 3306 allowed only from the server 
+   not from the whole server 
+
+
+
+Network ACL 
+
+security groups protect individual resources 
+
+NACLs protect entire subnets 
+
+Security Group    	 NACL
+
+Instance level  	Subnet level
+Stateful	         Stateless
+Allow rules only	Allow and deny rules
+
+In most applications, Security Groups handle most of the security. NACLs provide an additional subnet-wide layer when needed.
+
+what do you mean by statefull and stateless 
+
+a statefull firewall remembers connectsion 
+lets say you sent a request to a public ec2 instance and first the sg will check if the inbound rule is there if yes it will allow and ec2 sends back the request . do we need an outbound rule allowing this response no because the sg remebers this resposne belongs to and already established connection .it automatically allows the return traffic this is what statefull means 
+
+now stateless in the while sending the response it will again check if the outboud rule exits if yes ok no problem if not it is blocked there only 
+
+
+
+
+Availability zones : 
+
+aws regions contain multiple az
+
+if one data center fails , another can continue serving traffic 
+
+best practice : 
+
+public subnet A 
+public Subnet B
+
+private subnet A 
+private subnet B 
+

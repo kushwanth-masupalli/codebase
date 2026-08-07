@@ -1,0 +1,55 @@
+1) what is data = data is simply raw facts 
+
+ex : name : kushwanth , age : 21 , salary : 800000
+
+by themselves, these values dont tell us much 
+
+2) what is information = information is processed or organized data that has meaning.
+
+ex raw data 995745645 
+information is like  kushwanth's phone number is 9554545345
+
+
+File System approach 
+
+before databases existed , companies used to store everything in files 
+
+ex student.txt
+
+   101 rahul cse 
+   102 ravi ece 
+   .......
+
+
+applications directly read the whole and worte whole files 
+
+
+problems with flie system : 
+  
+  data redundancy 
+  data  inconsistency 
+  difficult to access the data
+  security problems
+  concurrency problems
+  no backup or recovery 
+
+dbms was introduced to over the limitaions of the traditional file system.
+
+
+what is dbms ?
+
+DBMS is a software that allows users and applications to create , store,retrive , update and delete data efficiently .
+
+features of DBMS : 
+
+fast retreival,easy data updates and deletion and security ,backup and recovery , multi user support , transactions .
+
+database  = a database is an organized collection of data
+
+DBMS  = is the software used to manages the database .
+
+RDBMS  = is a type of DBMS where data is stored in tables and relationships are maintained by keys .
+
+
+
+

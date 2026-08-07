@@ -1,0 +1,111 @@
+Transaction = is a sequence of database operations treated as one logical unit of work 
+
+
+BEGIN;
+
+UPDATE Account
+SET balance = balance - 100
+WHERE id = 'A';
+
+UPDATE Account
+SET balance = balance + 100
+WHERE id = 'B';
+
+COMMIT;
+
+
+both operaiotn must succeed if the second fials rollback the first operaiotns is also undone .
+
+
+2) ACID properties : 
+
+1) ATOMICITY = guarantess that a transaction is treated as an indivisible unit. 
+2) CONSISTENCY = a transaction must tabke the database form one valid state to antoher 
+3)ISOLATION = while multiple transaction execute concurrently one transaction should not improperly interfer with another .
+4) DURABILITY = once a transacotins is committed the changes should survice the crashses/restart 
+
+
+3) CONCURRENCY PROBLEMS 
+
+DIRTY READ = Transaction  A reads datat that transaction B has changed but not commited 
+
+lets say inital balance = 1000 transaction B updates account set balacne = 500 but b has't commitand transaction A sees 500 then B does rollback actual balance return to 1000
+
+NON-REPEATABLE READ
+
+transaction A reads the same row twice get diffenrt values because another transcation modifed modified and commited it between the reads 
+
+
+PHANTOM READ
+
+transaction A executes a query that returns a set of rows. 
+another transcation inserts/deltes rows matchign the condition
+when A  executes the smae query again the set of row changes 
+
+LOST UPDATE 
+
+lets say a stock = 10 transaction A reads 10 and transaction B reads 10  a want to decrease by 2 and b want to decrease by 3 supposea writes 8 and then B writes 7 
+final A's update has effectivey been lost that a lost update
+
+
+4) ISOLATION LEVELS 
+
+
+
+READ UNCOMMMITED -> READ COMMITED -> REPEATABLE READ -> SERIALIZABLE 
+
+read uncommmited is like not guarnate of coucnuruent 
+
+read commited in the sense transaction can only read teh commited data 
+
+repeateble read  = if you need a row during a transaction , that database provides stronger guarantees that repated reads of that row see a consistent versoin, depending on the dbms implementation 
+
+serializable = the goal is for concurrent execution to produce results equivalent to some serail exectuoin of tranasactions
+
+if T2 is waited untill  T1 is completed 
+
+adv  = strongest isolation 
+dis = less concurrency and potentially more blocking /conflicts
+
+
+
+
+5) shared vs Exclusive lock 
+
+locks control concurrent access to data 
+
+shared lock - s lock 
+
+used for reading  = mulitple transaction can hold a shared lock simultaneorly 
+both can read 
+but an exclusive lock cannot be aquired while conflicating shared lock remains 
+
+
+Exclusive lock - X lock 
+
+used for writing 
+
+only one transactoin can hold the relevant exclusive lock 
+
+shared locks allow concurrent reads, while exclusive locks provide exclusive access for writes 
+
+6) TWO -Phase locking 
+
+2PL is a locking protocol that helps guarnateed conflict serializabliity 
+
+
+7) DEADLOCK 
+
+a deadlock occurs when transactoin wait for each other indefinilty 
+
+ex TA locks row1 waits for row2
+TB  lcoks row1 and waits for row1
+so indefintley they will wait for each toher 
+
+DeadLock detectoin a common approach is a wait for graph if there is a cycle then there is a deadlock 
+
+
+
+
+
+

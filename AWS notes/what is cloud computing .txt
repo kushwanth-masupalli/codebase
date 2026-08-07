@@ -1,0 +1,212 @@
+cloud computing is the delivery of computing resources ( servers, storage, databases, networking , software , etc. ) over the intert on demand , without owning the physical hardware. 
+
+instead of buying your own computers and servers , you rent them from a cloud provider whenever you need them . 
+
+iaas = infrastructure as a service  int that the cloud provider will just provide the infra you will manage the os and app
+pass = platform as a service in that the cloud provider will manages the infra and plafrom and you only provide your application code ex aws elastic beanstalk
+sass = software as a service that meant you use a complete software application over the internet ex gmail or zoom ..
+
+
+PUBLIC VS PRIVATE VS HYBRID
+
+public cloud : a public cloud is owned by a cloud provider , and multiple customers share the same physical infrastructure while remaininig logically isolated . 
+
+ex aws, azure, gcp
+
+private cloud : a private cloud is cloud infrastructure dedicated to a single organization 
+it can be hosted in the company's own data center or hosted by a third party but reserved exclusively for that company 
+
+Hybrid cloud : a hybrid cloud combines both public cloud and private cloud some applications or data stay in the private cloud , while others run in the public cloud. 
+
+
+AWS GLOBAL INFRASTRUTURE 
+
+
+├── Regions
+│     ├── Availability Zones (AZs)
+│     │      ├── Data Centers
+│     │      ├── Servers
+│     │      └── Networking
+│
+├── Edge Locations
+│
+└── Regional Edge Caches
+
+
+1) Region : a region is a geographical area. ex mumbai,singapore , ohio etc 
+2) Availability Zone : each region contains multiple Availability Zones.
+each az is seperate data center with independent power,cooling and networking connected with high speed and low latency lines . 
+
+if one az-a fails the az-b may still be working that's why in production we always deploy across multiple az's 
+
+
+3) Edge locatoins : 
+    used by service like cloudfront . 
+    instead of downlading file from mumbai every time 
+   
+    user in hyd -> what is the nearest edge location -> faster response . 
+    this reduces the latencey 
+4) 
+
+
+
+
+
+
+shared responsiblity model 
+
+
+aws is responsible for security  the cloud 
+
+they manage physical servers and datacenters, networking, storage hardware, hypervisor,power,cooling.....
+
+user is responsible for the security in cloud 
+ex iam users,passwords,security groups,application code,os updates database users..
+
+
+
+
+
+ AI slop 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+AWS Well-Architected Framework 🏗️
+
+AWS created a set of best practices for building reliable, secure, and efficient cloud applications.
+
+Think of it as:
+
+"How should I design my application so it runs well on AWS?"
+
+It consists of six pillars.
+
+1. Operational Excellence
+
+Can you deploy and operate your application efficiently?
+
+Example:
+
+CI/CD
+Monitoring
+Logging
+Automation
+2. Security
+
+Protect:
+
+Data
+Users
+Applications
+
+Examples:
+
+IAM
+Encryption
+Security Groups
+Least privilege access
+3. Reliability
+
+Can your application continue running even if something fails?
+
+Example:
+
+EC2 Crash
+
+↓
+
+Load Balancer
+
+↓
+
+Another EC2
+4. Performance Efficiency
+
+Use the right resources.
+
+Example:
+
+Instead of:
+
+64 CPU
+
+2 Users
+
+Use:
+
+2 CPU
+
+2 Users
+
+Scale only when needed.
+
+5. Cost Optimization
+
+Don't waste money.
+
+Bad:
+
+10 EC2 instances
+
+Only 2 users
+
+Good:
+
+Auto Scaling
+
+↓
+
+Pay only when needed
+6. Sustainability
+
+Reduce unnecessary resource usage and energy consumption.
+
+Examples:
+
+Shut down unused instances
+Right-size resources
+Use managed services when appropriate
+Real Example
+
+Suppose you're deploying a Spring Boot application.
+
+A well-architected design might look like:
+
+Users
+   │
+Application Load Balancer
+   │
+Auto Scaling Group
+   │
+EC2 (Spring Boot)
+   │
+RDS
+   │
+S3
+   │
+CloudWatch
+
+Why?
+
+Reliable → Multiple EC2 instances
+Secure → Security Groups + IAM
+Cost Efficient → Auto Scaling
+High Performance → Load Balancer
+Operational Excellence → CloudWatch monitoring
+Sustainable → Scale down when traffic is low
+		

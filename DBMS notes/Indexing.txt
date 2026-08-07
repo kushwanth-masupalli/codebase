@@ -1,0 +1,3 @@
+An index is an auxiliary data structure that allows the database to locate rows more efficiently instead of scanning the entire table. The trade-off is additional storage and slower writes because indexes must also be maintained.
+
+

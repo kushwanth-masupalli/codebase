@@ -1,0 +1,64 @@
+ER MODEL 
+
+ER model is a coneptual way of desiging a database 
+
+it is like desgining the database before actually writing the sql 
+
+componenets of a ER Model
+
+an er Model has three main components : 
+1) entity 
+2) attribute 
+3) realtionship 
+
+---Entity : 
+
+is a real world object that we want to store information about . 
+
+ex student, employee 
+
+in the  ER diagram entity is represented by a rectangle 
+
+---Attribute : an attribute describe an entity like what actually there in the entity 
+for exam a student has rollno and name etc... rollno and name all these are attributes
+
+1) simple attribute , compostie attribute , single valued attribute,mulit valued attribute,
+derived attribute , key attribute = uniquely identifies an entity . 
+
+---Relationship 
+
+a relationship describes how entites are connected 
+
+relationship is shown using daimond
+
+
+Degree of Relationship : 
+1) Unary = same entity relates to itself 
+2) Binary = two entites in one relatoinship
+3) Ternary = three entites in one relationship
+
+
+Cardinality 
+
+tells us how many entites can participate in a realtionship 
+
+1) one to one
+2) one to many 
+3) many to one
+4) many to many
+
+
+degree tell how many entities can participate and cardinality tells how many instances or records or rows can be associtead with instances of another entity 
+
+
+Weak Entity : a weak entity is an entity that cannot be uniquely identited by its own attribuets
+
+
+
+ER to Relational  Mapping 
+
+entity = table
+attributes = columsn 
+key attribute = primary key 
+relationshipt = created by foreign keys
+
