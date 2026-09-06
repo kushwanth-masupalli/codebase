@@ -1,16 +1,34 @@
-ANAMOLIYS 
+The main reason: prevent anomalies
 
-1) Insertion anomaly  = it occurs when it is not possible to insert data into the database because some required information is missing or incomplete 
-ex : if a database every record to have a primary key , and no value is provided for that key, the record cannot be inserted into the table ;
+Suppose you have:
 
-2) Deltetion anomaly  = it occurs when deleting a record unintentionally results in the loss of other important data  .
+student_id	student_name	course	instructor
+1	Ravi	Java	Kumar
+2	Priya	Java	Kumar
+3	Arun	SQL	Raj
 
-ex : a database contians information about customers and their orders, deleting a customer record may also delete all the orders associated with that cusomter , leading to loss of valuable information  
+Now Java → Kumar is stored multiple times.
 
-3) Update anomaly  =  an update anomaly occurs when modifying data in a database leads to 
-inconsitencies because the same data is stored in mulitple places 
+If Kumar's name changes, you have to update it in multiple rows. That's where problems occur.
 
-ex : if a database contains employee salary information in multiple records , and the salary is updated in one record but not in others , it may result in incorrect caluclatoins and reporting . 
+1. Update anomaly
+
+You update Kumar's name in one row but forget another.
+
+➡️ Database now has inconsistent data.
+
+2. Insert anomaly
+
+Suppose you want to add a new course Spring Boot, but nobody has enrolled yet.
+
+With this table, you may not be able to store the course without having a student.
+
+3. Delete anomaly
+
+Suppose Arun is the only student taking SQL and you delete Arun.
+
+You accidentally lose the information that SQL → Raj exists.
+
 
 
 these anomalies can be removed with the process of normalization , which generally splits the database which results in reducing the anomalies in the database .

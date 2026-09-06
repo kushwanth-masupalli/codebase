@@ -1,0 +1,45 @@
+What is an IP Address?
+
+An IP address identifies a network interface/device on an IP network so that packets can be routed to it.
+
+
+IPv4 has 32 bits, divided into four 8-bit parts:
+
+192       .168       .1        .10
+│          │          │          │
+8 bits    8 bits     8 bits     8 bits
+
+Total = 32 bits
+
+Each part can range from:
+
+0 → 255
+
+Therefore:
+
+0.0.0.0 → 255.255.255.255
+
+There are theoretically:
+
+2^32 ≈ 4.29 billion
+
+IPv4 addresses.
+
+
+Subnetting
+
+Subnetting means dividing an IP network into smaller networks.
+
+For example:
+
+192.168.1.0/24
+
+can be divided into smaller subnets.
+
+Why do we subnet?
+
+Organize networks
+Reduce broadcast domains
+Improve IP address utilization
+Isolate network segments
+Control routing

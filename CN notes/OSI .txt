@@ -1,0 +1,75 @@
+
+
+The OSI model is a conceptual framework that standardizes how communication happens over a network, dividing it into 7 layers.
+
+At the bottom, the physical layer transmits raw bits over wired or wireless media. The data link layer encapsulates bits into frames for node-to-node delivery using MAC addresses. The network layer handles logical addressing (IP) and routing between networks. The transport layer provides end-to-end communication using port numbers, with protocols like TCP for reliability and UDP for speed. The session layer establishes, manages, and terminates sessions. The presentation layer handles translation, encryption, and compression. Finally, the application layer provides network services to applications through protocols like HTTP and DNS.
+
+As data moves down the layers, it gets encapsulated — each layer adds its own header — and this model is really useful for troubleshooting since it lets you isolate problems at specific layers.
+
+
+TCP/IP model 
+
+The main difference is that the OSI model has 7 layers while TCP/IP has 4. OSI is theoretical reference model used for teaching and standardization, TCP/IP is a practical implementation model that the actual Internet runs on. TCP/IP merges OSI's Session, Presentation, and Application layers into one Application layer, and combines Data Link and Physical into the Network Access layer. So when we say 'TCP/IP is what networks actually use,' it means protocols like IP, TCP, UDP, and HTTP operate within this 4-layer architecture.
+
+open systems interconnection model is a conceptual 7 layer framework used to understand how data is communicated between networked systems 
+
+the 7 layers are 
+
+7. Application
+6. Presentation
+5. Session 
+4. Transport
+3. Network 
+2. Data Link 
+1. Physical
+
+1) Physical Layer :  is responsible for transmitting raw bits over the physical medium . it deals with electrical or optical or radio signals , connectors, cables , voltage levels and transmissoin rates .
+
+data unit : bits 
+
+
+2) Data Link : The Data Link layer provides node to node communication over the same local network it handles 
+
+data unit : Frame 
+
+major responsibilites : 
+
+i) MAC Addressing 
+ii) Framing = packages the bits into frames 
+iii) Error detection  = commonly uses CRC to detect corrputed frames 
+iv) Device = switch
+
+3) Network Layer : is responsible for logical addressing and routing packets between different networks . IP operates at this layer 
+
+data unit : packet 
+
+Major Responsibilites : 
+i) Logical addressing : users ip address 
+ii) Routing = determin how packests travel from one network to the other 
+iii) Device = rotuer
+
+layer 2 : which device on my local network 
+layer 3 : which network should this packet go to 
+
+4) Transport Layer 
+
+the transport layer provides end to end communication between applications runnign on different hosts. it can provide reliablility , flow contorl  , sequencing and multiplexing depending on the protocol.
+
+there are two major protocols : TCP or UDP 
+
+data unit : for TCP segemtn , for UPD datagram 
+
+TCP : connection oriented , reliable, ordered, provides retransmission ,provide flow contorl , provide congestion control 
+UDP : connections less, no guaranteed delivary , no gauranteed ordering ,lower overhead, faster in many use cases.
+
+Layers 5,6,7 are frequently grouped together when discussing model TCP/IP networking 
+
+5) Session layer : 
+
+the sessoin layer is responsible for establisihgin , managing and terminating communication sessions between applications 
+
+6) Presentation Layer : this layer is responsible for how data is represented , including , encoding, serialization , encryption and compression.
+
+7)Application Layer : layer  network service direcly to applications. it defines protocols that application use to communicate over a network
+
+ex HTTP,HTTPS,FTP,SMTP 

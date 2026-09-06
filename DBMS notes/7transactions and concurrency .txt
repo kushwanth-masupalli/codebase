@@ -99,7 +99,7 @@ shared locks allow concurrent reads, while exclusive locks provide exclusive acc
 a deadlock occurs when transactoin wait for each other indefinilty 
 
 ex TA locks row1 waits for row2
-TB  lcoks row1 and waits for row1
+TB  lcoks row2 and waits for row1
 so indefintley they will wait for each toher 
 
 DeadLock detectoin a common approach is a wait for graph if there is a cycle then there is a deadlock 

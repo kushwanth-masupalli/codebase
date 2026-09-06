@@ -1,0 +1,21 @@
+1) What is virtual Memory ?
+virtual memory is  a memory management technique that gives each process the illusion of having a large, continoues memory space, even when the availabe physical ram is smaller . the os keeps only the actively needed parts of a process in ram and stores inacitve pages on disk .
+
+2) Demand paging : is a virtual memory techinque where a page is loaded into the physical memory only when the proces actulaly access that page.
+
+3) What is a Page Fault and How is it Handled?
+
+A page fault occurs when a process accesses a virtual page that is not currently present in physical memory. The CPU traps into the operating system, which locates the page on secondary storage, loads it into a physical frame, updates the page table, and then restarts the interrupted instruction.
+
+4. Page Replacement Algorithms
+
+Which page should be removed from RAM to make room for the required page?
+
+A. FIFO — First In First Out
+B. Optimal Page Replacement : Optimal page replacement removes the page whose next use is farthest in the future.
+
+C. LRU — Least Recently Used
+
+5. What is Thrashing?
+Thrashing occurs when the system spends more time handling page faults and moving pages between RAM and disk than actually executing processes
+

@@ -1,0 +1,131 @@
+1) TCP = transmissoin control  protocal is a connectoin oriented , reliable, byte-strem transfer protocol.
+
+
+3 Way handshake 
+
+before sending applicatoin data , TCP establishes a connection using : 
+
+s1 : syn , seq = x
+meaning : i want to establish a TCP connection , and my initial sequence number is x 
+
+s2 : syn-ack , seq = y, ack = x+1
+meaning : i recived your syn, and i also want to establish a connectoin . my sequence number is y . 
+
+s3 : ack , ack = y+1
+means : i recevied your syn 
+now both sides know that communication is possible 
+
+why 3 way and not 2 way : 
+
+tcp needs both sides to confirm both directions of communication and synchronize their inital sequence numbers . 
+
+with only two messages : 
+
+clinet -> syn -> server
+client <-  syn-ack <- server
+
+the server know the clinet recived the server's syn-ack only if the clinet sends another message 
+
+the thrid ack confirms 
+
+Client knows Server's sequence number
+Server knows Client's sequence number
+Both know the other side received their sequence number
+
+TCP connection termination - 4 way 
+TCP usually uses four segments because TCP is full-duplex: each direction of communication is closed independently.
+
+
+Client                              Server
+
+   FIN ---------------------------->
+
+       <---------------------------- ACK
+
+       <---------------------------- FIN
+
+   ACK ---------------------------->
+
+
+
+what is time_wait 
+
+after sending the final ack , the client doesn't immediately disapper. 
+
+it enters TIME_WAIT for two main reasons : 
+
+1) retransmitted fin : if the ack gets lost : the clinet can send the ack again . 
+2) prevent old packets from interfering with a new connectoin 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2) UDP 
+
+ user datagram protocol is a connectoinless , transport-layer protocol that sends independent datagrams wihtout establishing a connecttion first. 
+
+no relialbility , no ordering, no retransmission , no flow control, no congestion control , 
+lower overhead , error dection with check sum 
+
+
+if a datapacket is lost there is no automatic retransmission . 
+
+where is udp prefered :  online gaming, voice or video calls , live streaming .
+
+
+udp   = connectionless , no guranteed delivery , no ordering , retransmission , flow or congestion control 
+
+lower overhed , 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+

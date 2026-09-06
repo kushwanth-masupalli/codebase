@@ -1,0 +1,99 @@
+1) What is computer network ?
+
+a computer network is a collectoin of interconnected devices such as  computers, servers, routers, and switches that communicate with each other and share data or resources 
+
+why do we need networks
+
+communication = computers can exchange data.
+resource sharing = printers, storage ,internet connections etc
+centralized services = servers can provide services to many clients 
+distributed computing = different machines can work together 
+scalability = applications can communicate across multiple machines.
+
+
+2) Type of networks 
+
+i) PAN  = personal Area Network 
+
+is a very small network around an individual , typically within a few meters 
+ex: phone  -> bluetooth -> earbuds 
+
+ii) LAN = local Area network 
+
+lan connects devices within a relatively small geographical area such as a home , office,school,or building .
+
+typical technologies = ethernet 
+
+LAN generally provides high speed and low latency because the devices are geogrphically close.
+
+iii) MAN = metropolitan Area Network 
+
+man connects multiple lans acorss city or metropolitan area
+
+it is larger than a  lan but smaller than a wan.
+
+iv) WAN = Wide Area Network 
+
+wan connects networks accross large geographical ares such as countires or continetnts.
+the internet is the largest example of a WAN .
+
+
+
+3) Network Topologies 
+
+network topology describes how devices in a network are physically or logically connected.
+
+the major topologies are : bus,star,ring,mesh,
+
+bus
+
+PC1 ─── PC2 ─── PC3 ─── PC4
+       Common Bus
+
+
+
+star
+
+       PC1
+        |
+PC2 ─ Switch ─ PC3
+        |
+       PC4
+
+
+ring
+
+PC1 ─── PC2
+ |       |
+PC4 ─── PC3
+
+
+mesh
+
+A ───── B
+|\     /|
+| \   / |
+|  \ /  |
+|  / \  |
+| /   \ |
+C ───── D
+
+
+hybrid
+
+        Switch
+       /      \
+   Star       Star
+  / | \       / | \
+ PC PC PC    PC PC PC
+
+
+
+4) Bandwith  = is the maximum amount of data that a  network connection can theoretically transmit per unit of time .
+ Throughput = is the actual amount of data successfully transferred per unit of time.
+
+ latency =  is the amount of time taken for data to travel from the source to the destination.
+
+
+
+

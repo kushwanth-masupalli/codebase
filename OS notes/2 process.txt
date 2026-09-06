@@ -1,0 +1,57 @@
+1) what is a process ?
+
+a process is a program that is current executing . a program by itself is just a passive set of instructions stored in disk, where as a process is an active entity with its own execution state and resources managed by the OS .
+
+2) what is PCB?
+
+a pcb is a data strucuter maintained by the os for each process .it contains the information the os need to manages,schedule, suspend and resuem that proces 
+
+PCB
+├── PID
+├── Process State
+├── Program Counter
+├── CPU Registers
+├── Scheduling Information
+├── Memory Management Information
+├── Open Files
+└── I/O Information
+
+
+3) process states and transitions
+
+new to ready = the process is created ready to be scheduled 
+ready to running = when the scheduler dispatches it onto the CPU . 
+running to waiting = when a proceess need something that is not immediately complete , commonly an i/o operation.
+waiting to ready= means it took the input and read to be scheduled again.
+running to ready = usually happens when the process is preempted or a higher priority process may need the CPU .
+running to terminated  = process finished execution or is explicity termintaed.
+
+
+4) context swtiching : is the process of saving the execution state of the currently running process and loading the save state of another process so teh cpu can swith execution  between them .
+
+context swithcing enables multitaksing , but excessive context switching can reduce performance 
+
+
+5) Process creation and termination
+
+this section contains three very important unix/linux concetps 
+
+fork,exec,wait
+
+fork= creates a new child process by duplicating the calling process  the new process is called the child, while original is called the parent.
+
+exec = does not create a new process , instead it replaces the current process program image with another program 
+
+the pid remains the smae because the process itself wasn't  replaced its program image was.
+
+wait allows a parent process to wait for a child process to termiate and obtain the information about the child's termination 
+
+
+
+
+
+6) Process vs program 
+
+a program is a passive collection of instructions stored on disk, while a process is an active instance of that program currently executing . a single program can have multiple process running simultaneoulsy and each process has its own executoin state and resources.
+
+

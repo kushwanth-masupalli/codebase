@@ -1,0 +1,254 @@
+1) why is memory management needed?
+
+memory managemnt is the responsibility of the os to allocate ,deallocate, protect and keep track of the main memory so that multiple proceees can execute safely and efficiently 
+
+main resposibilites : 
+allocation 
+deallocation 
+protection 
+addresss translation 
+efficinet utilization 	
+
+2) what is Contiguous memory allocatoin ?
+
+in contigous memory allocation  ,each process is assigned one continous block of physical memoroy 
+
+there are two main approaches : 
+
+i) Fixed Partitioning : 
+
+memory divied into fixed size partitions 
+
+RAM
++----------+
+| Partition|
++----------+
+| Partition|
++----------+
+| Partition|
++----------+
+| Partition|
++----------+
+
+a process occupies one partition 
+
+advantage : simple implementation 
+disadvantage  : internal fragmentation 
+
+ii) Variable Paritoning  : 
+
+paritions are created according to process size : 
+
+advantage : less internal fragmentation 
+diadvantage : free memory may exist, but it is scattered . 
+
+
+
+
+3) Placement algorithms 
+
+1) first fit 
+2) best fit
+3) worst fit 
+
+
+
+4) What is paging ?
+
+paging is a memory management technique in which the logical address space of a process is divided into a fixed size pages and physical memory is divied into fixed size frames of the same page . pages can be loaded into any availabe frame, and a page table maps pages to frames 
+
+
+Logical memory
+Process
++-------+
+| Page0 |
++-------+
+| Page1 |
++-------+
+| Page2 |
++-------+
+| Page3 |
++-------+
+
+Physical memory
+RAM
++--------+
+| Frame0 |
++--------+
+| Frame1 |
++--------+
+| Frame2 |
++--------+
+| Frame3 |
++--------+
+| Frame4 |
++--------+
+
+pages can be stored any where
+
+
+So the process doesn't need contiguous physical memory.
+
+Address Translation
+
+A logical address is divided into:
+
++-----------+---------+
+| Page No.  | Offset  |
++-----------+---------+
+
+The page number indexes the page table.
+
+Example:
+
+Logical Address
+      |
+      v
+Page Number + Offset
+      |
+      v
+Page Table
+      |
+      v
+Frame Number
+      |
+      v
+Frame Number + Offset
+      |
+      v
+Physical Address
+
+The offset remains unchanged.
+
+-----Advantages of Paging
+
+Eliminates external fragmentation.
+
+Allows non-contiguous allocation.
+
+Simplifies memory management.
+
+Supports virtual memory.
+
+------Disadvantages
+
+Page tables consume memory.
+
+Address translation introduces overhead.
+
+Can still have internal fragmentation in the last page.
+
+
+4 ) What is a Page Table?
+
+A page table is a data structure maintained by the operating system that maps each virtual page of a process to a physical frame in memory.
+
+Why is the page table a performance problem?
+
+The page table itself is stored in main memory.
+
+Without optimization:
+
+CPU
+ ↓
+Read page table from memory
+ ↓
+Read actual data from memory
+
+That means two memory accesses for every instruction/data access.
+
+To reduce this overhead, modern CPUs use a TLB.
+
+
+What is TLB?
+Interview answer
+
+TLB, or Translation Lookaside Buffer, is a small, fast hardware cache that stores recently used page table entries to speed up virtual-to-physical address translation.
+
+Instead of always accessing the page table in RAM:
+
+CPU
+ ↓
+TLB
+ ├── Hit → Get frame immediately
+ └── Miss → Check page table in RAM
+TLB Hit
+
+The page mapping is already cached.
+
+CPU → TLB → Physical Memory
+
+Fast.
+
+TLB Miss
+
+The mapping isn't cached.
+
+CPU
+ ↓
+TLB miss
+ ↓
+Page table in RAM
+ ↓
+Update TLB
+ ↓
+Physical memory
+
+Slower.
+
+
+
+
+
+5) What is Segmentation?
+
+Segmentation is a memory management technique that divides a program into logical, variable-sized segments such as code, data, stack, and heap.
+
+Unlike paging, segmentation reflects the logical structure of the program.
+
+
+
+Example:
+
+Program
++-------------+
+| Code        |
++-------------+
+| Data        |
++-------------+
+| Heap        |
++-------------+
+| Stack       |
++-------------+
+
+
+Each segment has:
+
+Base – starting physical address.
+
+Limit – size of the segment.
+
+The logical address is:
+
+Segment Number + Offset
+
+The segment table gives:
+
+Segment
+  ↓
+Base + Limit
+
+The offset must be less than the limit.
+
+
+Advantages
+
+Matches program structure.
+
+Different protection can be applied to different segments.
+
+Easy sharing of logical modules.
+
+Disadvantage
+
+Causes external fragmentation because segments are variable-sized.

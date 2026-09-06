@@ -1,0 +1,119 @@
+1) what is deadlock ?
+
+deadlock is a situation  where a set of proceess are permanenlty blocked because each process is waiting for a resource that is held by another process in the same set .as a result none of them can proceed.
+
+2) Is deadlock the same as a process being blocked?
+
+No.
+
+A process can be blocked temporarily because it's waiting for I/O or a resource.
+
+Deadlock means a group of processes are permanently waiting for each other, so no progress is possible unless the OS/intervention breaks the situation.
+
+
+3) What are the four necessary conditions for deadlock ?
+
+i) Mutual Exclusion : a least one resource must be non-sharable, meaning only one process can use it 
+ii) Hold and Wait : a process is holding at least one resource while waiting to acquire another resource
+iii) No preemption : a resource cannot be forcibly taken away from a process it must be release voluntarily 
+iv) circular wait : a circular chain exits where every process is waiting for a resource held by the next process .
+
+4) what is resource allocatoin graph?
+
+a resource allocation graph is a direct graph  used to reprsent which process are requesting or holding which resources.
+
+in this graph if there is a cycle means a dead is occurred.
+
+
+5) What is dead lock prevention ?
+
+deadlock prevention means desiging the system so that at least one of the four necessary deadlock conditions can never occur .
+
+method 1 : eliminate hold and wait 
+require a process to request all the required resourcea at once
+
+method 2 : allow premption
+if a process requests a resource that isn't availabe , the system can take away resources it current holds , where the resrouce type permits this 
+ex you can't meaningfully take a printer halfway through a print operation and give it to another process.
+
+method 3 : prevnet circular wait
+assign an ordering to resources 
+
+For example:
+
+R1 < R2 < R3 < R4
+
+Require every process to acquire resources in increasing order.
+
+
+6) Deadlock Avoidance  = banker's algorithm 
+
+deadlock avoidance doesn't prevent the conidtions from occuring .instead before allocating resources , the os checks whether granting the request would leave the system in a safe state . 
+
+7) what is safe state ?
+
+a system is in safe state if there exists some order in which every process can obtain its remiaing required resources, finish and release its resources.
+
+
+safe state = at least one safe sequence exists.
+unsafe state = no guarnateed safe sequence 
+
+
+6) Recovery from Deadlock 
+
+method 1 : terminate process 
+
+we can terminate one process or all deadlocked process 
+
+terminating one process may release enough resources for the others to continue .
+
+method 2 : resource preemption 
+take a resource from one proces and give to another 
+
+
+7) Stravation vs DeadLock 
+
+this is another very common interview quesiton 
+
+Deadlock
+
+A set of processes are waiting for each other, and none can make progress.
+
+Example:
+
+P1 → waiting for P2
+P2 → waiting for P1
+
+Neither gets the resource.
+
+
+
+Starvation
+
+A process waits for an indefinitely long time because other processes continually get the resources or CPU before it.
+
+Example:
+
+P1 → low priority
+P2 → high priority
+P3 → high priority
+P4 → high priority
+P5 → high priority
+...
+
+P1 keeps getting ignored.
+
+There doesn't have to be a cycle.
+
+Key difference
+Deadlock
+→ Nobody in the deadlocked set can proceed.
+
+Starvation
+→ One process may wait indefinitely,
+  while other processes continue making progress.
+Solution for starvation
+
+Aging.
+
+Gradually increase the priority of a process the longer it waits.

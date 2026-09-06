@@ -1,0 +1,90 @@
+what is Race condition ?
+
+a race condition occurs when multiple threads or process access shared data concurrently , and final result depends on the order in which they execute.
+
+how do we prevent race conditions ?
+ by synchronizing the access to shared resource using mechanisms such as mutextes, semaphores ,monitors , atomic operatoins or concurrency primitives .
+
+What is Critical Section problem ?
+
+a critical section is the part of a program where a process or thread accesses shared resources .the critical section problem is about designing a mechanism that allows safe access to that shared resource when multiple processes execute concurrently.
+
+--- A correct solution must satisfy three requirements : 
+
+1 ) Mutual Exclusion  = at most one process can execute its critcal section at at time all other process will wait
+
+2) Progress  = if no process is currently inside the critical section and some process want to enter the system , the sytem should not unnecessarliy prevent one of them from entering.
+
+3) Bounded Waiting : a process should not wait indefinitely to enter its critical section after requesting access . 
+this prevents starvation .
+
+
+A))) What is Peterson's Solution ?
+
+pertersons solution is a software -based synchronization algorithm that solves the critical section problem for two process . it uses two shared variables : flag to indicate intrest in entering the cirtical section and turn to decide whose trun it is .
+
+B)))What is Mutex ?
+
+a mutex or mutual exlusion lock , is a synchronization mechanism that ensures only one thread can enter a critical section at a time.
+
+typical flow is like lock() -> run the critical section -> unlock()
+
+
+what is Busy waiting ?
+in busy waiting , a thread continously checks whether the lock is available.
+
+what is the difference between Busy waiting and blocking ?
+busy waiting continously consumes CPU while waiting, whereas blocking puts the waiting thread to sleep so the CPU can execute other work. Blocking is generally preferable when the expected wait is long.
+
+
+C))) what is semaphore?
+a semaphore is an synchronization primitive respreseneted by an integer value that is accessed through atomic operations , traditoinally called wait() and signal().it is used to control access to shared resouces and coordinate processes or threads .
+
+the important part is that these opeartions are atomic
+
+wait(s) will decremtn s by 1 
+is s==0 the next will stop wait 
+
+signal(s) will increment s by 1 signally the resource is available 
+
+Binary Semaphore vs Counting Semaphore
+
+binary semaphore value is generally 0 or 1 
+
+it can be used for mutual exlusion 
+1-> resource available
+0-> resource unavailabe 
+
+Counting semaphore 
+can have values greate thatn 1 
+for ex s = 3 in the sense there are 3 identical resources 
+
+three threads can acquire one resource each 
+
+Thread 1 → S = 2
+Thread 2 → S = 1
+Thread 3 → S = 0
+
+Thread 4 has to wait.
+
+when one resource is released : another waiting thread can proceed.
+
+
+
+Classic Synchronization problems 
+
+A) Producer Consumer Problem 
+
+the prodcure consumer problem involves producres generating data and consumer consuming the data through a shared buffer. Synchronizatoin is required to prevent the producer fomr inserting into the full buffer and the consumer from removing from an empty buffer 
+
+B) Reader -Writer problem 
+
+the reader -writer problem involveds a shared resource where multipl readers cna read simultaneosouly , but a writer requires exclusive access .
+
+C) Dining philosophers problem
+
+the dining philoshpers problem models multiple processes competing for limited shared resource and demonstrates problems such as deadlock and starvation.
+
+
+
+

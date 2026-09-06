@@ -1,0 +1,68 @@
+1) what is os?
+
+
+an operating system is a system software that acts as an interface between applications and the computer hardware . it manages resources such as the cpu , memory storage and i/o devices , and provides commmon services that applications need . 
+
+ex :when a  java program wants to read a file , it doesn't directly control the disk. it requests the os through a system call and the os handles the underlying hardware interaction
+
+what does the os manage ?
+
+cpu = decide which process/ thread gets the cpu time 
+memory = allocates and manages ram 
+files/storage 
+i/o devices 
+process ,security 
+
+
+
+2 ) Types of os 
+
+i) batch operating system  = jobs are collected and executed in batches without human interactoin .
+ii) multiprogramming os = multiple programs are kpet in the memory at the same time 
+iii) multitaksing os    = allow multiple processes to appera to run simultaneously by rapidly switching the cpu between them. 
+iv) real time os  = a real time os is designed to provide responses within predictable timing  constraints . the important requirement is not simpley speed, but meeting deadlines reliably .
+v) distributed os = mulitple netwrokds computesr and attempst to make them work together as a coordinated system, often hiding the underlying machine boundaries from users or applicatsion
+vi) mulitprocessing os = use multiple cpu's to exectue process in parallel.
+
+
+3) Kernel mode vs User mode
+
+modern operaitng system use different privilege levels to protect the system. the two most important modes are user mode and kernal mode
+
+applications normally run in the user mode, where they have restricetd access to hardware and critical os resources. the kernel runs in the kernal mode with higher privilages and can direlclyt access hardware and protected memory . 
+
+when an application needs a privileged operation ,such as reading a file, it makes a system call ,which causes a transition from user mode to kernel mode..
+
+4) what is system call ?
+
+a system call is the mechanism through which a user level application requests a service from the os system kernl 
+
+applications normally cannot direcly perform privileged operations, so they user system calls to request services such as file access, process creating , memory management and netowrking 
+
+
+
+
+4) OS as a resource manager 
+
+an os acts as a resource manages because multiple processes may compete for limited resouces such as cpu time , memory , disk and i/o devices 
+
+the os decides how these resources are allocated , when they are allocated and which process gets access to them . its goal is to use resouces efficienlty while maintainign fairness , isloation , and system performance .
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

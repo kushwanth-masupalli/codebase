@@ -1,0 +1,48 @@
+1) what is thread ?
+
+a thread is the smallest unit of CPU execution within a process. a process can contain one or more multiple threads .
+
+threads belonging to the same process share resources such as the code section , data section and head but each thread has it own program counter and CPU registers and stack .
+
+
+2) process vs thread 
+
+a process is an independet execution environment with its own address space and resources whereas a thred is an execruiont unit inside a process
+
+3) why are threads faster than process ? 
+
+threads are generally cheper because threads within the same process share the smae address space and many resources .creating a new thread doesn't require creating an entirey separeate addres like a new process does . context switching between threads of the smae process can also involve less work than switghinc between separate processess.
+
+
+4) User level vs Kernel level threads 
+User-level:
+
+Threads are managed by the application/runtime, without the kernel directly managing each thread.
+
+Kernel-level:
+
+Threads are managed by the OS, so the kernel can schedule each thread independently on CPUs.
+
+
+5) Multithreading models 
+
+1) many to one   = many user threads map to one kernel therad
+2) one to one = one user thread is mapped to one kernel thread
+3) many to many = many users threds are mapped to many kernel threads.
+
+
+6) benefits = responsiveness -> one thread can perform a long runnign operation while another continue handling user interaction the other dont have to stop 
+ resrouce sharing ,lower overhead ,
+parallesim
+
+Thread 1 → Core 1
+Thread 2 → Core 2
+Thread 3 → Core 3
+
+
+problems 
+
+1) race condition  = since they share memory two threads can access and modify the same data concurrently 
+2) dead lock = two or more threads can become permanantly blocked waiting for resouces held by each other .
+3) harder debugging 
+

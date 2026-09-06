@@ -1,0 +1,26 @@
+CPU Scheducling : is the mechanism used by the operating system to decide which ready process should get the cpu next . 
+
+
+the main goals are : 
+
+maximize cpu utilization , maximize throughput, minimize waiting time, minimize turnaround time , minimize response time 
+
+why do we need scheduling ? 
+ 
+if there is only one process , scheduling isn't much of a problem , but when multiple process compute for the cpu , the os needs a policy to decide who runs and for how long.
+
+FCFS = first come first served 
+
+SJF = shortest job first  = sjf selects the process with the smallest CPU burst time to exectue next .
+
+ROUND ROBIN  = is a preemptive scheduling algorithm where each process gets a fixed amount of 
+CPU time called the time quantum . after it quantum expires, the process is preempted and 
+moved to the back of the ready queue.
+this algo provide fair CPU sharing . 
+
+non-preemptive = once a process gets the CPU ,the OS does not forcibly take the CPU away. the process gives it up when it finishes ,blocks or voluntarily yields.
+
+preemptive  =the OS can forcibly take the CPU away from a currently running process and give it to another process.
+
+PRIORITY SCHEDULING : in priority scheduling , each process is assigned a priority , and the process with the highest priority is selected to run . 
+

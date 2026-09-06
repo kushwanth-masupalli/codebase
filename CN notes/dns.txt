@@ -1,0 +1,70 @@
+DNS — Domain Name System
+
+DNS (Domain Name System) converts a human-readable domain name into an IP address.
+
+For example:
+
+google.com
+    ↓
+142.250.x.x
+
+Why?
+
+Computers ultimately communicate using IP addresses, while humans prefer domain names.
+
+How DNS Name Resolution Works
+
+Suppose you enter:
+
+www.example.com
+
+Your computer needs to find its IP address.
+
+A simplified process:
+
+User enters:
+https://www.example.com
+        │
+        ▼
+Browser checks its DNS cache
+        │
+        │ cache miss
+        ▼
+OS checks DNS cache
+        │
+        │ cache miss
+        ▼
+DNS Resolver
+(e.g., ISP / configured DNS resolver)
+        │
+        │ "I need the IP for www.example.com"
+        ▼
+   ┌─────────────────────────────────────┐
+   │ Recursive Resolver does the lookup  │
+   └─────────────────────────────────────┘
+        │
+        ▼
+Root DNS Server
+"Who handles .com?"
+        │
+        ▼
+.com TLD DNS Server
+"Who handles example.com?"
+        │
+        ▼
+Authoritative DNS Server
+"What is www.example.com?"
+        │
+        ▼
+IP Address
+e.g. 93.184.216.34
+        │
+        │ resolver returns answer
+        ▼
+DNS Resolver
+        │
+        ▼
+OS / Browser
+        │
+        ▼
+Browser connects to 93.184.216.34
