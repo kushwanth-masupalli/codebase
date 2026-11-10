@@ -1,5 +1,4 @@
 package OOPs.Abstraction;
-
 import OOPs.Abstraction.Animal;
 import OOPs.Abstraction.Dog;
 
@@ -9,9 +8,17 @@ import OOPs.Abstraction.Dog;
  * ===============================================
  *
  * ✅ Definition:
+ * 
+ * asbtraction is the process of hiding internal implementation details and exposing only the essential functionality 
+ * to the user . in java abstraction is achevied by using abstract classes and interfacces  .
+ * 
+ * 
+ * 
+ * 
  * Abstraction is an OOP concept that hides complex implementation details
  * and shows only the essential features of an object.
  *
+ * 
  * ✅ Achieved Using:
  * - Abstract classes
  * - Interfaces
@@ -29,6 +36,70 @@ import OOPs.Abstraction.Dog;
  * - Cannot be instantiated directly
  * - Suitable for sharing common code among related classes
  */
+
+
+abstract class Animal {
+
+    // 1. Instance concrete
+    void eat() {
+        System.out.println("Eating");
+    }
+
+    // 2. Static
+    static void info() {
+        System.out.println("Animal");
+    }
+
+    // 3. Abstract
+    abstract void sound();
+
+    // 4. Final
+    final void breathe() {
+        System.out.println("Breathing");
+    }
+
+    // 5. Private
+    private void helper() {
+        System.out.println("Helper");
+    }
+
+    // 6. Synchronized
+    synchronized void sleep() {
+        System.out.println("Sleeping");
+    }
+}
+
+
+
+interface Animal {
+
+    // 1. Abstract
+    void sound();
+
+    // 2. Default (concrete instance)
+    default void eat() {
+        System.out.println("Eating");  // can be called using the object of the dervied class
+    }
+
+    // 3. Static
+    static void info() {
+        System.out.println("Animal");  // can be called using the name of the interface 
+    }
+
+    // 4. Private
+    private void helper() { 
+        System.out.println("Helper");  // can be called inside the  default or static 
+    }
+}
+
+
+
+
+
+
+
+
+
 
 // Abstract class representing a Vehicle
 abstract class Vehicle {

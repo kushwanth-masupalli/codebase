@@ -58,20 +58,12 @@ it enters TIME_WAIT for two main reasons :
 2) prevent old packets from interfering with a new connectoin 
 
 
+flow control : is a  which will protect the reciver from overwhelming data , the reciever buffer can overflow 
+tcp solution : the reciever tells the sender how much data it can currently accept . (rwnd) 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+congestion control : is a siutiation where many senders send data simultaneoulsy that router will be overhead . 
+tcp solution : (cwnd) controls how much data can be in flight based on network conditions. 
+tcp algorithms inlcude congestion avoidance , slow start, fast retramit, fast recovery . 
 
 
 
@@ -89,7 +81,7 @@ if a datapacket is lost there is no automatic retransmission .
 where is udp prefered :  online gaming, voice or video calls , live streaming .
 
 
-udp   = connectionless , no guranteed delivery , no ordering , retransmission , flow or congestion control 
+udp   = connectionless , no guranteed delivery , no ordering , no retransmission , flow or congestion control 
 
 lower overhed , 
 

@@ -6,3 +6,7 @@ public      | Yes        | Yes          | Yes                 | Yes
 protected   | Yes        | Yes          | Yes                 | No
 default     | Yes        | Yes          | No                  | No
 private     | Yes        | No           | No                  | No
+
+
+encapsulatoin is a practice of bundling data and methods that operate on that data into a class and restricting direct to the internal state allowing controlled access using getter and setters method . in  java we commonly achevie it using private fields and public getters and setters methods . 
+
