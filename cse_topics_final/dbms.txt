@@ -1,0 +1,68 @@
+ACID properties
+Normalization (1NF, 2NF, 3NF, BCNF)
+Denormalization
+Indexing
+Types of indexes (clustered, non-clustered)
+Transactions
+Concurrency control
+Locking mechanisms (shared, exclusive)
+Deadlock in DBMS
+ER model
+Relational model
+Keys (primary, foreign, candidate, composite, unique)
+Joins
+Views
+Triggers
+Stored procedures
+CAP theorem
+Database sharding
+Database replication
+Partitioning (horizontal vs vertical)
+OLTP vs OLAP
+SQL vs NoSQL
+B-Tree and B+ Tree indexing
+Query optimization
+Isolation levels
+Dirty read, phantom read, non-repeatable read
+Database schema design
+Data warehousing
+Two-phase commit protocol
+Database normalization vs denormalization trade-offs
+Materialized views
+Foreign key constraints and referential integrity
+Three-schema architecture and data independence
+Functional dependencies and Armstrong's axioms
+Attribute closure and finding candidate keys
+Lossless decomposition and dependency preservation
+Multivalued dependency (4NF, 5NF)
+Relational algebra
+Relational calculus
+Weak entity, cardinality and participation in ER model
+Generalization, specialization and aggregation
+ER diagram to relational schema conversion
+Schedules (serial, serializable)
+Conflict serializability and view serializability
+Recoverable, cascadeless and strict schedules
+Two-phase locking (2PL, strict 2PL)
+Timestamp-based concurrency control
+Optimistic vs pessimistic concurrency control
+MVCC (Multi-Version Concurrency Control)
+Deadlock prevention (wait-die, wound-wait)
+Log-based recovery and Write-Ahead Logging (WAL)
+Checkpointing and ARIES recovery
+Shadow paging
+Savepoints and rollback
+Hash indexing
+Bitmap index and covering index
+Query processing and join algorithms (nested loop, hash join, sort-merge)
+Cost-based query optimizer
+Buffer management
+Cursors
+NoSQL types (key-value, document, column-family, graph)
+BASE properties
+Distributed databases
+Star schema vs snowflake schema
+ETL, data lake and data mart
+SQL injection and database security
+Backup and recovery strategies
+Database users, roles and privileges (GRANT, REVOKE)

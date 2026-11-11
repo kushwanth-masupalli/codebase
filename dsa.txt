@@ -1,0 +1,4 @@
+1)when you want max and min at every point of the array  try to use hashmap 
+
+2) Since the robot can move both left and right, curr can become negative, so we use an offset to convert every possible position into a valid positive array index.
+offset = N × K, and the actual DP index is curr + offset, allowing us to store positions from -N×K to +N×K.

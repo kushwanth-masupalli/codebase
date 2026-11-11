@@ -1,0 +1,67 @@
+Spring Framework basics
+Spring Boot
+Dependency Injection
+Inversion of Control
+Spring MVC
+REST API design
+Spring Security
+Hibernate / JPA
+ORM concepts
+Spring Data JPA
+Microservices with Spring Boot
+Spring Boot Actuator
+Exception handling in Spring (ControllerAdvice)
+Spring AOP
+Bean lifecycle and scopes
+Application context
+Transaction management (@Transactional)
+Connection pooling
+Caching in Spring (@Cacheable)
+API authentication (JWT, OAuth2)
+Swagger / OpenAPI documentation
+Unit testing (JUnit, Mockito)
+Message brokers (Kafka, RabbitMQ) integration
+Docker basics for deployment
+CI/CD basics
+Maven/Gradle build tools
+API versioning
+Logging (SLF4J, Logback)
+Servlets and JSP basics
+Servlet lifecycle
+Spring Boot auto-configuration and starters
+Component scanning and stereotype annotations (@Component, @Service, @Repository)
+@Autowired, @Qualifier and @Primary
+Constructor vs setter vs field injection
+@Configuration and @Bean
+Spring profiles and externalized configuration (application.yml)
+@RestController, @RequestMapping, @PathVariable, @RequestParam, @RequestBody
+DTO pattern and ModelMapper / MapStruct
+Bean validation (@Valid)
+ResponseEntity and HTTP status handling
+Pagination and sorting in Spring Data
+JPA entity relationships (OneToOne, OneToMany, ManyToMany)
+N+1 problem and fetch strategies (lazy vs eager)
+JPQL, native queries and Criteria API
+Hibernate first-level and second-level cache
+Entity lifecycle states
+Transaction propagation and isolation levels
+Optimistic vs pessimistic locking in JPA
+Database migrations (Flyway, Liquibase)
+Authentication vs Authorization
+Spring Security filter chain
+Password hashing (BCrypt)
+CORS and CSRF
+Filters vs Interceptors
+Spring Cloud (Eureka, Config Server, API Gateway)
+RestTemplate, WebClient and Feign Client
+Circuit breaker with Resilience4j
+Distributed tracing and monitoring (Micrometer, Prometheus)
+Reactive programming and Spring WebFlux
+@Async and @Scheduled
+Redis caching
+Spring events
+Integration testing (@SpringBootTest, MockMvc, Testcontainers)
+Docker Compose and Kubernetes basics
+Layered architecture and design patterns in Spring
+Idempotent APIs and rate limiting
+Git and branching strategies

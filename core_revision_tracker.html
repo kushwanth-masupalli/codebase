@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Core Revision Sprint — OS · CS · DBMS · CN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0d11;
+    --surface:#12151b;
+    --surface2:#181c24;
+    --border:#262b35;
+    --text:#e7e9ec;
+    --text-muted:#8890a0;
+    --os:#e8a33d;
+    --cs:#a291f2;
+    --dbms:#43cfc9;
+    --cn:#72d472;
+    --neutral:#8b93a1;
+    --mock:#e2775b;
+    --radius:8px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',system-ui,sans-serif;
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+  }
+  .mono{font-family:'JetBrains Mono',ui-monospace,monospace;}
+  #app{max-width:760px;margin:0 auto;padding:18px 16px 60px;}
+
+  /* ---------- header ---------- */
+  .hero{
+    display:flex;justify-content:space-between;align-items:flex-start;
+    padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid var(--border);
+    gap:12px;flex-wrap:wrap;
+  }
+  .hero-title{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:600;letter-spacing:.02em;color:var(--text);}
+  .hero-title .cursor{display:inline-block;width:8px;color:var(--os);
+    animation:blink 1.1s steps(1) infinite;}
+  @media (prefers-reduced-motion: reduce){ .cursor{animation:none;} }
+  @keyframes blink{0%,49%{opacity:1;}50%,100%{opacity:0;}}
+  .hero-sub{font-size:12.5px;color:var(--text-muted);margin-top:4px;}
+  .hero-stat{text-align:right;font-family:'JetBrains Mono',monospace;}
+  .hero-stat .big{font-size:18px;font-weight:700;color:var(--text);}
+  .hero-stat .small{font-size:11px;color:var(--text-muted);margin-top:2px;}
+
+  /* ---------- day strip (heatmap) ---------- */
+  .strip{display:flex;gap:3px;margin-bottom:14px;}
+  .strip-cell{
+    flex:1;height:20px;border-radius:3px;background:var(--surface2);
+    border:1px solid var(--border);cursor:pointer;position:relative;
+    transition:transform .1s ease;
+  }
+  .strip-cell:hover{transform:translateY(-2px);}
+  .strip-cell.active-day{outline:1.5px solid var(--text);outline-offset:1px;}
+
+  /* ---------- subject progress bars ---------- */
+  .bars{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;margin-bottom:18px;}
+  .bar-row{display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11.5px;}
+  .bar-label{width:38px;flex-shrink:0;color:var(--text-muted);letter-spacing:.03em;}
+  .bar-track{flex:1;height:6px;background:var(--surface2);border-radius:99px;overflow:hidden;}
+  .bar-fill{height:100%;border-radius:99px;transition:width .25s ease;}
+  .bar-count{width:34px;text-align:right;color:var(--text-muted);flex-shrink:0;}
+
+  /* ---------- day tabs ---------- */
+  .tabs{
+    display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;margin-bottom:14px;
+    scrollbar-width:thin;
+  }
+  .tabs::-webkit-scrollbar{height:5px;}
+  .tabs::-webkit-scrollbar-thumb{background:var(--border);border-radius:99px;}
+  .tab{
+    flex-shrink:0;min-width:56px;padding:8px 6px 7px;border-radius:var(--radius);
+    background:var(--surface);border:1px solid var(--border);cursor:pointer;
+    text-align:center;transition:border-color .15s,background .15s;
+  }
+  .tab:hover{border-color:#3a4150;}
+  .tab.active{background:var(--surface2);border-color:var(--text);}
+  .tab .d-num{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;}
+  .tab .d-date{font-size:9.5px;color:var(--text-muted);margin-top:1px;}
+  .tab .d-dots{display:flex;gap:2px;justify-content:center;margin-top:5px;flex-wrap:wrap;width:20px;margin-left:auto;margin-right:auto;}
+  .tab .dot{width:4px;height:4px;border-radius:1px;}
+  .tab .d-check{font-size:9px;color:var(--cn);margin-top:3px;font-family:'JetBrains Mono',monospace;}
+
+  /* ---------- day panel ---------- */
+  .panel{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;}
+  .panel-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;flex-wrap:wrap;gap:6px;}
+  .panel-head h2{font-family:'JetBrains Mono',monospace;font-size:14px;margin:0;font-weight:700;}
+  .panel-head .phase-tag{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mock);border:1px solid var(--mock);padding:2px 6px;border-radius:4px;letter-spacing:.04em;}
+  .panel-head .phase-tag.learn{color:var(--text-muted);border-color:var(--border);}
+
+  .item{display:flex;align-items:flex-start;gap:10px;padding:9px 4px;border-radius:6px;cursor:pointer;position:relative;}
+  .item:hover{background:var(--surface2);}
+  .item input[type=checkbox]{
+    position:absolute;opacity:0;width:22px;height:22px;left:4px;top:9px;margin:0;cursor:pointer;
+  }
+  .item .box{
+    width:19px;height:19px;border:1.5px solid var(--border);border-radius:5px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;color:transparent;margin-top:1px;
+    transition:background .15s,border-color .15s;
+  }
+  .item input:checked + .box{background:var(--accent);border-color:var(--accent);color:#0b0d11;}
+  .item input:checked + .box::after{content:'✓';font-size:12px;font-weight:700;}
+  .item input:focus-visible + .box{outline:2px solid var(--accent);outline-offset:2px;}
+  .item .tag{
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.03em;font-weight:600;
+    padding:2px 6px;border-radius:4px;border:1px solid var(--accent);color:var(--accent);
+    flex-shrink:0;margin-top:1px;white-space:nowrap;
+  }
+  .item .txt{font-size:13.5px;line-height:1.4;color:var(--text);}
+  .item input:checked ~ .txt{color:var(--text-muted);text-decoration:line-through;text-decoration-color:var(--border);}
+
+  .divider{height:1px;background:var(--border);margin:10px 0;}
+
+  .notes-label{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--text-muted);letter-spacing:.04em;margin-bottom:6px;display:block;}
+  textarea{
+    width:100%;min-height:56px;background:var(--surface2);border:1px solid var(--border);
+    border-radius:6px;color:var(--text);font-family:'Inter',sans-serif;font-size:13px;
+    padding:8px 10px;resize:vertical;
+  }
+  textarea:focus-visible{outline:1.5px solid var(--text-muted);}
+
+  /* ---------- legend + footer ---------- */
+  .legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--text-muted);}
+  .legend span{display:inline-flex;align-items:center;gap:5px;}
+  .legend i{width:8px;height:8px;border-radius:2px;display:inline-block;}
+
+  .footer{display:flex;justify-content:space-between;align-items:center;margin-top:18px;flex-wrap:wrap;gap:8px;}
+  #resetBtn{
+    background:none;border:1px solid var(--border);color:var(--text-muted);
+    font-family:'JetBrains Mono',monospace;font-size:10.5px;padding:6px 10px;border-radius:6px;cursor:pointer;
+  }
+  #resetBtn:hover{border-color:#a45050;color:#d98080;}
+  .save-note{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-muted);}
+
+  #loading{padding:40px 0;text-align:center;color:var(--text-muted);font-family:'JetBrains Mono',monospace;font-size:12px;}
+</style>
+</head>
+<body>
+<div id="app"><div id="loading">Loading tracker…</div></div>
+
+<script>
+(function(){
+
+  var SUBJECTS = ['OS','CS','DBMS','CN'];
+  var COLORVAR = {OS:'--os',CS:'--cs',DBMS:'--dbms',CN:'--cn',MOCK:'--mock',NEUTRAL:'--neutral'};
+
+  var DAYS = [
+    {n:1,date:'Aug 15',dow:'Sat',phase:'learn',items:[
+      ['OS',"OS types & functions · Process states & PCB"],
+      ['CS',"OOP — Encapsulation & Inheritance"],
+      ['DBMS',"ER Model — entities, attributes, relationships, cardinality"],
+      ['CN',"OSI Model — all 7 layers & their functions"],
+      ['TASK',"Start 1-page cheat sheets (OS / CS / DBMS / CN) — log today's key points"],
+      ['PRACTICE',"10–15 MCQs across today's 4 topics"]
+    ]},
+    {n:2,date:'Aug 16',dow:'Sun',phase:'learn',items:[
+      ['OS',"Context switching · Threads (user vs kernel-level)"],
+      ['CS',"OOP — Polymorphism, Abstraction, Virtual functions"],
+      ['DBMS',"Keys — primary, candidate, foreign, super, composite"],
+      ['CN',"TCP/IP model — 4 layers vs OSI comparison"],
+      ['REVISE',"Day 1 topics — 10 min blind recall each, no notes"],
+      ['PRACTICE',"15–20 MCQs across today's 4 topics"]
+    ]},
+    {n:3,date:'Aug 17',dow:'Mon',phase:'learn',items:[
+      ['OS',"CPU Scheduling — FCFS, SJF, SRTF (+ numericals)"],
+      ['CS',"Time & Space Complexity — Big-O / Ω / Θ, common classes"],
+      ['DBMS',"ER-to-Relational mapping"],
+      ['CN',"Physical layer basics, transmission modes"],
+      ['REVISE',"Day 2 topics — 10 min blind recall"],
+      ['PRACTICE',"15–20 MCQs + 3–5 numericals"]
+    ]},
+    {n:4,date:'Aug 18',dow:'Tue',phase:'learn',items:[
+      ['OS',"CPU Scheduling — RR, Priority, Multilevel Queue (+ numericals)"],
+      ['CS',"Arrays & Strings — searching, two-pointer, sliding window"],
+      ['DBMS',"Relational Algebra — select, project, join"],
+      ['CN',"Data Link layer — framing, error detection (checksum, CRC)"],
+      ['REVISE',"Day 3 topics — 10 min blind recall"],
+      ['PRACTICE',"15–20 MCQs + 3–5 numericals"]
+    ]},
+    {n:5,date:'Aug 19',dow:'Wed',phase:'learn',items:[
+      ['OS',"Process Sync — race conditions, critical section, semaphores/mutex"],
+      ['CS',"Sorting algorithms — all 6 + complexity table"],
+      ['DBMS',"Relational Algebra — union, set difference, more joins"],
+      ['CN',"MAC addressing, switching basics (hub/switch/bridge)"],
+      ['REVISE',"Day 4 topics — 10 min blind recall"],
+      ['PRACTICE',"15–20 MCQs across today's 4 topics"]
+    ]},
+    {n:6,date:'Aug 20',dow:'Thu',phase:'learn',items:[
+      ['OS',"Classical sync problems — Producer-Consumer, Reader-Writer, Dining Philosophers"],
+      ['CS',"Linked List — singly/doubly/circular, reversal, cycle detection"],
+      ['DBMS',"Normalization — 1NF, 2NF"],
+      ['CN',"IP addressing — classful addressing"],
+      ['REVISE',"Day 5 topics — 10 min blind recall"],
+      ['PRACTICE',"15–20 MCQs across today's 4 topics"]
+    ]},
+    {n:7,date:'Aug 21',dow:'Fri',phase:'learn',items:[
+      ['OS',"Deadlocks — 4 necessary conditions + prevention"],
+      ['CS',"Stacks & Queues — applications, array/LL implementation"],
+      ['DBMS',"Normalization — 3NF, BCNF + FD examples, decomposition"],
+      ['CN',"Subnetting & CIDR — numericals"],
+      ['REVISE',"Day 6 topics — 10 min blind recall"],
+      ['PRACTICE',"15–20 MCQs + subnetting numericals"]
+    ]},
+    {n:8,date:'Aug 22',dow:'Sat',phase:'learn',items:[
+      ['OS',"Deadlock avoidance — Banker's Algorithm (numerical)"],
+      ['CS',"Trees — BST + traversals (in/pre/post/level order)"],
+      ['DBMS',"SQL basics — DDL / DML / DCL / TCL"],
+      ['CN',"Routing algorithms — distance vector vs link state"],
+      ['REVISE',"Day 7 topics — 10 min blind recall"],
+      ['PRACTICE',"15–20 MCQs + Banker's Algorithm numerical"]
+    ]},
+    {n:9,date:'Aug 23',dow:'Sun',phase:'learn',items:[
+      ['OS',"Deadlock detection & recovery"],
+      ['CS',"Trees — height/balance, AVL basics, Heap"],
+      ['DBMS',"SQL Joins — inner / outer / left / right"],
+      ['CN',"ARP / RARP, ICMP basics"],
+      ['REVISE',"Day 8 topics — 10 min blind recall"],
+      ['PRACTICE',"15–20 MCQs across today's 4 topics"]
+    ]},
+    {n:10,date:'Aug 24',dow:'Mon',phase:'learn',items:[
+      ['OS',"Memory Management — contiguous allocation, paging, segmentation, TLB"],
+      ['CS',"Graphs — representations, BFS/DFS"],
+      ['DBMS',"SQL — subqueries, aggregate functions, GROUP BY / HAVING"],
+      ['CN',"Transport layer — TCP vs UDP, TCP header fields"],
+      ['REVISE',"Day 9 topics — 10 min blind recall"],
+      ['PRACTICE',"15–20 MCQs across today's 4 topics"]
+    ]},
+    {n:11,date:'Aug 25',dow:'Tue',phase:'learn',items:[
+      ['OS',"Virtual Memory — demand paging, page faults, replacement (FIFO/LRU/Optimal) numericals"],
+      ['CS',"Graphs — Dijkstra's shortest path (basic)"],
+      ['DBMS',"Transactions — ACID properties, schedules (serial/serializable)"],
+      ['CN',"3-way handshake, flow control (sliding window)"],
+      ['REVISE',"Day 10 topics — 10 min blind recall"],
+      ['PRACTICE',"15–20 MCQs + page replacement numericals"]
+    ]},
+    {n:12,date:'Aug 26',dow:'Wed',phase:'learn',items:[
+      ['OS',"Thrashing, Belady's Anomaly · Disk Scheduling — FCFS/SSTF/SCAN/C-SCAN"],
+      ['CS',"Hashing — collision handling (chaining/open addressing), load factor"],
+      ['DBMS',"Concurrency Control — 2PL, timestamp ordering, deadlocks in DBMS"],
+      ['CN',"Congestion control — slow start, congestion avoidance, AIMD"],
+      ['REVISE',"Day 11 topics — 10 min blind recall"],
+      ['PRACTICE',"15–20 MCQs + disk scheduling numericals"]
+    ]},
+    {n:13,date:'Aug 27',dow:'Thu',phase:'learn',items:[
+      ['OS',"File Systems — allocation methods, directory structures"],
+      ['CS',"Recursion & DP basics — memoization vs tabulation, Fibonacci/Knapsack"],
+      ['DBMS',"Indexing (B-tree/B+ tree) & File organization (heap/sequential/hashing)"],
+      ['CN',"Application layer — DNS, HTTP/HTTPS, FTP, SMTP, DHCP + security basics"],
+      ['REVISE',"Day 12 topics — 10 min blind recall"],
+      ['PRACTICE',"15–20 MCQs — this closes all new content"]
+    ]},
+    {n:14,date:'Aug 28',dow:'Fri',phase:'mock',items:[
+      ['RECAP',"OS — skim Days 1–6 (Process / Scheduling / Sync / Deadlock-start)"],
+      ['RECAP',"CS — skim Days 1–6 (OOP / Complexity / Arrays / Sorting / Linked List)"],
+      ['RECAP',"DBMS — skim Days 1–6 (ER / Keys / Relational Algebra / Normalization-start)"],
+      ['RECAP',"CN — skim Days 1–6 (OSI / TCP-IP / Physical / Data Link / MAC / IP)"],
+      ['MOCK',"Mock Test 1 — 40 mixed MCQs from Days 1–6, timed 40 min"],
+      ['REVIEW',"Go through every wrong answer — concept gap vs silly mistake"]
+    ]},
+    {n:15,date:'Aug 29',dow:'Sat',phase:'mock',items:[
+      ['RECAP',"OS — skim Days 7–13 (Deadlock avoid/detect, Memory, VM, Disk, File Systems)"],
+      ['RECAP',"CS — skim Days 7–13 (Stacks/Queues, Trees, Graphs, Hashing, DP)"],
+      ['RECAP',"DBMS — skim Days 7–13 (Normalization-end, SQL, Transactions, Concurrency, Indexing)"],
+      ['RECAP',"CN — skim Days 7–13 (Subnetting, Routing, ARP, Transport, Handshake, Congestion, App layer)"],
+      ['MOCK',"Mock Test 2 — 40 mixed MCQs from Days 7–13, timed 40 min"],
+      ['REVIEW',"Go through every wrong answer — concept gap vs silly mistake"]
+    ]},
+    {n:16,date:'Aug 30',dow:'Sun',phase:'mock',items:[
+      ['MOCK',"FULL MOCK — 60–80 mixed MCQs across all 52 topics, timed ~70 min"],
+      ['REVIEW',"Build a weak-topic list — every topic behind a wrong answer"],
+      ['RECAP',"Quick skim of all 4 running cheat sheets, front to back"]
+    ]},
+    {n:17,date:'Aug 31',dow:'Mon',phase:'final',items:[
+      ['FIX',"Re-study ONLY the topics on your weak-topic list from Days 14–16"],
+      ['SKIM',"Final full-syllabus skim — all 4 cheat sheets, one clean pass"],
+      ['TASK',"Stop new input by 6 PM — sleep well, don't cram past exhaustion"]
+    ]}
+  ];
+
+  var STORAGE_KEY = 'core-revision-state-v1';
+  var hasStorage = (typeof window !== 'undefined' && window.storage && typeof window.storage.get === 'function');
+  var state = {checked:{}, notes:{}};
+  var activeDay = computeDefaultDay();
+  var saveTimer = null;
+
+  function computeDefaultDay(){
+    var start = new Date(2026,7,15); start.setHours(0,0,0,0);
+    var today = new Date(); today.setHours(0,0,0,0);
+    var diff = Math.round((today-start)/86400000);
+    var n = diff+1;
+    if(n<1) n=1;
+    if(n>17) n=17;
+    return n;
+  }
+
+  function tagVar(tag){
+    if(SUBJECTS.indexOf(tag)!==-1) return COLORVAR[tag];
+    if(tag==='MOCK') return COLORVAR.MOCK;
+    return COLORVAR.NEUTRAL;
+  }
+
+  async function loadState(){
+    if(!hasStorage) return {checked:{},notes:{}};
+    try{
+      var res = await window.storage.get(STORAGE_KEY, false);
+      if(res && res.value) return JSON.parse(res.value);
+      return {checked:{},notes:{}};
+    }catch(e){
+      return {checked:{},notes:{}};
+    }
+  }
+
+  async function saveState(){
+    if(!hasStorage) return;
+    try{ await window.storage.set(STORAGE_KEY, JSON.stringify(state), false); }
+    catch(e){ console.error('save failed', e); }
+  }
+
+  function scheduleSave(){
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(saveState, 400);
+  }
+
+  function dayCompletion(day){
+    var total = day.items.length, done = 0;
+    day.items.forEach(function(it,idx){ if(state.checked['d'+day.n+'-'+idx]) done++; });
+    return total ? done/total : 0;
+  }
+
+  function computeStats(){
+    var totals = {OS:0,CS:0,DBMS:0,CN:0}, done = {OS:0,CS:0,DBMS:0,CN:0};
+    var totalItems=0, doneItems=0;
+    DAYS.forEach(function(day){
+      day.items.forEach(function(it,idx){
+        totalItems++;
+        var checked = !!state.checked['d'+day.n+'-'+idx];
+        if(checked) doneItems++;
+        if(SUBJECTS.indexOf(it[0])!==-1){
+          totals[it[0]]++;
+          if(checked) done[it[0]]++;
+        }
+      });
+    });
+    return {totals:totals, done:done, totalItems:totalItems, doneItems:doneItems};
+  }
+
+  function esc(s){
+    var d = document.createElement('div'); d.textContent = s; return d.innerHTML;
+  }
+
+  function renderApp(){
+    var app = document.getElementById('app');
+    var stats = computeStats();
+    var planDay = computeDefaultDay();
+    var overallPct = stats.totalItems ? Math.round(100*stats.doneItems/stats.totalItems) : 0;
+
+    var html = '';
+
+    // hero
+    html += '<div class="hero">';
+    html += '<div><div class="hero-title">&gt;_ CORE_REVISION<span class="cursor">▌</span></div>';
+    html += '<div class="hero-sub">17-day sprint · OS / CS / DBMS / CN · Aug 15 → Aug 31</div></div>';
+    html += '<div class="hero-stat"><div class="big">'+overallPct+'%</div><div class="small">'+stats.doneItems+' / '+stats.totalItems+' done · plan day '+planDay+'/17</div></div>';
+    html += '</div>';
+
+    // strip
+    html += '<div class="strip">';
+    DAYS.forEach(function(day){
+      var pct = dayCompletion(day);
+      var color = day.phase==='learn' ? 'var(--neutral)' : 'var(--mock)';
+      var bg = pct===0 ? 'var(--surface2)' : 'color-mix(in srgb, '+color+' '+Math.round(pct*100)+'%, var(--surface2))';
+      var activeCls = (day.n===activeDay) ? ' active-day' : '';
+      html += '<div class="strip-cell'+activeCls+'" data-day="'+day.n+'" style="background:'+bg+'" title="Day '+day.n+' — '+Math.round(pct*100)+'% done"></div>';
+    });
+    html += '</div>';
+
+    // subject bars
+    html += '<div class="bars">';
+    SUBJECTS.forEach(function(s){
+      var total = stats.totals[s], done = stats.done[s];
+      var pct = total ? Math.round(100*done/total) : 0;
+      html += '<div class="bar-row"><span class="bar-label" style="color:var('+COLORVAR[s]+')">'+s+'</span>';
+      html += '<span class="bar-track"><span class="bar-fill" style="width:'+pct+'%;background:var('+COLORVAR[s]+')"></span></span>';
+      html += '<span class="bar-count">'+done+'/'+total+'</span></div>';
+    });
+    html += '</div>';
+
+    // tabs
+    html += '<div class="tabs" id="tabsRow">';
+    DAYS.forEach(function(day){
+      var activeCls = (day.n===activeDay) ? ' active' : '';
+      var pct = dayCompletion(day);
+      var checkMark = pct===1 ? '<div class="d-check">DONE</div>' : '';
+      var dots = '';
+      if(day.phase==='learn'){
+        SUBJECTS.forEach(function(s){ dots += '<span class="dot" style="background:var('+COLORVAR[s]+')"></span>'; });
+      } else {
+        dots += '<span class="dot" style="background:var(--mock);width:16px;"></span>';
+      }
+      html += '<div class="tab'+activeCls+'" data-day="'+day.n+'">';
+      html += '<div class="d-num mono">D'+day.n+'</div>';
+      html += '<div class="d-date">'+day.date+'</div>';
+      html += '<div class="d-dots">'+dots+'</div>';
+      html += checkMark;
+      html += '</div>';
+    });
+    html += '</div>';
+
+    // panel
+    var day = DAYS.filter(function(d){return d.n===activeDay;})[0];
+    var phaseLabel = day.phase==='learn' ? 'LEARN' : (day.phase==='final' ? 'FINAL' : 'MOCK');
+    var phaseCls = day.phase==='learn' ? ' learn' : '';
+    html += '<div class="panel">';
+    html += '<div class="panel-head"><h2>DAY '+day.n+' · '+day.date+' ('+day.dow+')</h2><span class="phase-tag'+phaseCls+'">'+phaseLabel+'</span></div>';
+    day.items.forEach(function(it,idx){
+      var id = 'd'+day.n+'-'+idx;
+      var checked = !!state.checked[id];
+      var vr = tagVar(it[0]);
+      html += '<label class="item" style="--accent:var('+vr+')">';
+      html += '<input type="checkbox" data-id="'+id+'" '+(checked?'checked':'')+'>';
+      html += '<span class="box"></span>';
+      html += '<span class="tag">'+it[0]+'</span>';
+      html += '<span class="txt">'+esc(it[1])+'</span>';
+      html += '</label>';
+    });
+    html += '<div class="divider"></div>';
+    html += '<span class="notes-label">NOTES — DAY '+day.n+'</span>';
+    html += '<textarea data-notes-day="'+day.n+'" placeholder="Anything to flag for tomorrow\'s revision…">'+esc(state.notes[day.n]||'')+'</textarea>';
+    html += '</div>';
+
+    // legend
+    html += '<div class="legend">';
+    html += '<span><i style="background:var(--os)"></i>OS</span>';
+    html += '<span><i style="background:var(--cs)"></i>CS</span>';
+    html += '<span><i style="background:var(--dbms)"></i>DBMS</span>';
+    html += '<span><i style="background:var(--cn)"></i>CN</span>';
+    html += '<span><i style="background:var(--neutral)"></i>REVISE / PRACTICE / TASK</span>';
+    html += '<span><i style="background:var(--mock)"></i>MOCK / REVIEW / FINAL</span>';
+    html += '</div>';
+
+    // footer
+    html += '<div class="footer">';
+    html += '<span class="save-note">'+(hasStorage?'Progress saves automatically.':'Storage unavailable — progress won\'t persist this session.')+'</span>';
+    html += '<button id="resetBtn">Reset all progress</button>';
+    html += '</div>';
+
+    app.innerHTML = html;
+    attachListeners();
+  }
+
+  function attachListeners(){
+    document.querySelectorAll('.strip-cell').forEach(function(el){
+      el.addEventListener('click', function(){
+        activeDay = parseInt(el.getAttribute('data-day'),10);
+        renderApp();
+      });
+    });
+    document.querySelectorAll('.tab').forEach(function(el){
+      el.addEventListener('click', function(){
+        activeDay = parseInt(el.getAttribute('data-day'),10);
+        renderApp();
+        var row = document.getElementById('tabsRow');
+        var activeEl = row.querySelector('.tab.active');
+        if(activeEl) activeEl.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+      });
+    });
+    document.querySelectorAll('.item input[type=checkbox]').forEach(function(el){
+      el.addEventListener('change', function(){
+        state.checked[el.getAttribute('data-id')] = el.checked;
+        scheduleSave();
+        renderApp();
+      });
+    });
+    var ta = document.querySelector('textarea[data-notes-day]');
+    if(ta){
+      ta.addEventListener('input', function(){
+        state.notes[ta.getAttribute('data-notes-day')] = ta.value;
+        scheduleSave();
+      });
+    }
+    var resetBtn = document.getElementById('resetBtn');
+    if(resetBtn){
+      resetBtn.addEventListener('click', function(){
+        if(confirm('Clear all checked topics and notes? This cannot be undone.')){
+          state = {checked:{}, notes:{}};
+          scheduleSave();
+          renderApp();
+        }
+      });
+    }
+  }
+
+  async function init(){
+    state = await loadState();
+    renderApp();
+    var activeTab = document.querySelector('.tab.active');
+    if(activeTab) activeTab.scrollIntoView({inline:'center', block:'nearest'});
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+Process vs Thread
+Process states and lifecycle
+Context switching
+CPU scheduling algorithms (FCFS, SJF, Round Robin, Priority)
+Multilevel queue scheduling
+Deadlock
+Deadlock prevention, avoidance, detection
+Banker's algorithm
+Semaphores
+Mutex vs Semaphore
+Monitors
+Producer-consumer problem
+Dining philosophers problem
+Readers-writers problem
+Memory management
+Paging
+Segmentation
+Virtual memory
+Page replacement algorithms (FIFO, LRU, Optimal)
+Thrashing
+Belady's anomaly
+Fragmentation (internal vs external)
+File systems
+Inter-process communication (IPC)
+Race condition
+Critical section problem
+Multithreading vs Multiprocessing
+Cache memory and cache coherence
+Disk scheduling algorithms
+System calls
+Kernel mode vs User mode
+Bootstrapping / boot process
+Spinlocks
+Orphan and zombie processes
+Functions and types of operating systems
+OS structure (monolithic, layered, microkernel)
+Process Control Block (PCB)
+fork(), exec(), wait() system calls
+User-level vs Kernel-level threads
+Multithreading models (many-to-one, one-to-one, many-to-many)
+Preemptive vs Non-preemptive scheduling
+Scheduling criteria (CPU utilization, throughput, turnaround time, waiting time, response time)
+SRTF and Priority scheduling
+Multilevel feedback queue
+Starvation and aging
+Convoy effect
+Real-time scheduling (rate monotonic, EDF)
+Peterson's solution
+Test-and-set and atomic instructions
+Condition variables
+Deadlock necessary conditions (Coffman conditions)
+Resource allocation graph
+Livelock
+Priority inversion
+Logical vs physical address and MMU
+Contiguous memory allocation (first fit, best fit, worst fit)
+Page tables, multilevel paging and inverted page table
+TLB (Translation Lookaside Buffer)
+Demand paging and page fault handling
+Working set model
+Copy-on-write
+Swapping
+Page table size and effective access time calculation
+File allocation methods (contiguous, linked, indexed)
+Directory structures
+inode and file control block
+Free space management
+Disk structure and RAID levels
+I/O systems (interrupts, polling, DMA)
+Spooling and buffering
+Interrupts and traps
+Signals
+Virtualization and containers
+Linux basics (shell, permissions, common commands)

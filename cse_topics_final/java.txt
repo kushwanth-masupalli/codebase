@@ -1,0 +1,83 @@
+OOPS concepts
+Inheritance
+Polymorphism (compile-time and runtime)
+Encapsulation
+Abstraction
+Interfaces vs Abstract classes
+Collections framework
+ArrayList vs LinkedList
+HashMap internal working
+HashMap vs Hashtable vs ConcurrentHashMap
+HashSet vs TreeSet vs LinkedHashSet
+Exception handling
+Checked vs Unchecked exceptions
+Multithreading in Java
+Synchronization
+Java Memory Model
+Garbage collection
+String pool
+String vs StringBuilder vs StringBuffer
+Static keyword
+Final, finally, finalize
+Generics
+Lambda expressions
+Streams API
+Functional interfaces
+equals() and hashCode() contract
+Immutability (immutable classes)
+Constructors and constructor chaining
+Method overloading vs overriding
+Access modifiers
+Java Virtual Machine (JVM) architecture
+Class loaders
+Serialization and deserialization
+volatile keyword
+Executor framework / Thread pools
+Wait, notify, notifyAll
+Java 8+ features
+Features of Java and platform independence
+JDK vs JRE vs JVM
+Data types, wrapper classes and autoboxing
+Type casting and type promotion
+Pass by value in Java
+this and super keywords
+Inner classes (member, static nested, local, anonymous)
+Enums
+Records
+Default and static methods in interfaces
+Marker interfaces
+Object class methods (toString, clone, equals, hashCode)
+Shallow copy vs deep copy and cloning
+Comparable vs Comparator
+Iterator vs ListIterator
+Fail-fast vs fail-safe iterators
+Queue, Deque and PriorityQueue
+TreeMap and LinkedHashMap
+CopyOnWriteArrayList and concurrent collections
+try-with-resources
+Custom exceptions
+throw vs throws
+Thread lifecycle
+Runnable vs Thread vs Callable
+Future and CompletableFuture
+Deadlock in Java
+ReentrantLock and ReadWriteLock
+Atomic classes and CAS
+ThreadLocal
+Daemon threads
+Virtual threads (Project Loom)
+Reflection
+Annotations (built-in and custom)
+Optional
+Method references
+Memory areas (heap, stack, metaspace)
+Garbage collectors (Serial, Parallel, G1, ZGC)
+Strong, soft, weak and phantom references
+Memory leaks in Java
+JIT compiler
+Singleton pattern and other design patterns
+SOLID principles
+Java I/O vs NIO
+Varargs
+Java 8 Date and Time API
+Sealed classes and newer Java features (Java 11, 17, 21)

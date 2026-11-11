@@ -1,0 +1,116 @@
+OSI Model
+TCP/IP Model
+TCP vs UDP
+Three-way handshake
+Four-way termination
+HTTP vs HTTPS
+HTTP methods
+HTTP status codes
+HTTP/1.1 vs HTTP/2 vs HTTP/3
+DNS and DNS resolution
+Load balancing
+CDN (Content Delivery Network)
+Sockets
+IP addressing (IPv4 vs IPv6)
+Subnetting
+Routing
+Switching
+Firewalls
+Proxy vs Reverse Proxy
+Cookies and sessions
+REST APIs
+WebSockets
+SSL/TLS handshake
+Congestion control
+Flow control
+ARP (Address Resolution Protocol)
+NAT (Network Address Translation)
+VPN
+Ports and port numbers
+Client-server architecture
+Latency vs Bandwidth vs Throughput
+Packet switching vs Circuit switching
+UDP use cases (streaming, gaming, DNS)
+Application layer protocols (HTTP, FTP, SMTP, DHCP)
+Man-in-the-middle attack
+Network types (LAN, MAN, WAN, PAN)
+Network topologies (bus, star, ring, mesh)
+Transmission media (guided vs unguided)
+Hub vs Switch vs Router vs Bridge
+MAC address vs IP address
+Data link layer and framing
+Error detection and correction (parity, checksum, CRC, Hamming code)
+CSMA/CD and CSMA/CA
+Ethernet and Wi-Fi (IEEE 802.11)
+VLAN
+DHCP
+ICMP, ping and traceroute
+TCP header and TCP states
+TCP reliable data transfer (sliding window, Go-Back-N, Selective Repeat)
+Stop-and-wait protocol
+Retransmission and timeouts (RTT estimation)
+CIDR and VLSM
+Distance vector vs Link state routing
+Routing protocols (RIP, OSPF, BGP)
+Unicast, multicast and broadcast
+Multiplexing (TDM, FDM)
+Email protocols (SMTP, POP3, IMAP)
+FTP vs SFTP
+SSH
+What happens when you type a URL in the browser
+CORS
+gRPC vs REST vs GraphQL
+Long polling vs Server-Sent Events vs WebSockets
+Symmetric vs Asymmetric encryption
+Digital signatures and certificates (PKI)
+Hashing and message authentication (HMAC)
+DoS and DDoS attacks
+Common attacks (ARP spoofing, DNS spoofing, SYN flood, session hijacking)
+IDS and IPS
+Quality of Service (QoS)
+Software Defined Networking (SDN)
+QUIC protocol
+
+
+
+
+Starvation and Aging 
+
+Definition : is a condition in an operating system where a process waits 
+indefinitely for cpu time or other resources because other processes keep getting priority. 
+
+ex : suppose the cpu scheduler uses priority scheduling . 
+
+process p1 has priority 1 
+process p2 has priority 2 
+process p3 has priority 3 
+process p4 has priority 4 
+
+assume a smaller number means higher priority . if high -priority processes keep arriving , p4 may never get cpu time because the scheudler always chooses higher - priority processess first . 
+
+this is called starvation 
+
+how to prevent startvation we use a technique called aging. 
+
+
+Aging 
+
+Definition : is a technique used by the operating system to prevent starvation by gradually increasing the priority of a process the longer it waits in the ready queue. 
+
+
+Example:
+
+Suppose P3 has priority 10, where a smaller number means higher priority.
+
+Waiting time	       Priority of P3
+Initially	           10
+After 5 seconds	           8
+After 10 seconds	   6
+After 15 seconds	   4
+ 
+as p3 waits longer , its priority imporves. eventually it gets cpu time even if higher-priority processess keep arrving. 
+
+this prevents a process from waiting indefinitely 
+
+
+

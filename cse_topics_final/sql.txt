@@ -1,0 +1,65 @@
+SELECT statement basics
+WHERE clause
+GROUP BY
+HAVING
+ORDER BY
+JOINS (inner, left, right, full, self, cross)
+Subqueries (correlated and non-correlated)
+Aggregate functions (COUNT, SUM, AVG, MIN, MAX)
+Window functions (ROW_NUMBER, RANK, DENSE_RANK, LEAD, LAG)
+UNION vs UNION ALL
+Indexes
+Constraints (NOT NULL, UNIQUE, CHECK, DEFAULT)
+Primary key vs Foreign key
+Normalization
+Views
+Stored procedures
+Triggers
+Transactions and rollback
+CTE (Common Table Expressions)
+Recursive queries
+CASE statements
+Date and time functions
+String functions
+DDL, DML, DCL, TCL commands
+Query optimization
+Execution plans
+GROUP BY vs PARTITION BY
+NULL handling (IS NULL, COALESCE, IFNULL)
+Self join use cases
+CREATE TABLE and data types
+ALTER TABLE
+INSERT, UPDATE, DELETE
+DELETE vs TRUNCATE vs DROP
+DISTINCT
+Aliases
+LIKE and wildcards
+IN, BETWEEN, EXISTS
+ANY and ALL operators
+LIMIT, OFFSET, TOP and pagination
+INTERSECT and EXCEPT / MINUS
+Natural join vs equi join
+Foreign key actions (ON DELETE CASCADE, SET NULL)
+Auto increment and sequences
+Composite keys
+Temporary tables
+Find Nth highest salary
+Find duplicate records and delete duplicates
+Find employees earning more than their manager
+IN vs EXISTS vs JOIN performance
+Window frames (ROWS BETWEEN, RANGE BETWEEN)
+Running total and moving average
+NTILE, FIRST_VALUE, LAST_VALUE
+PIVOT and UNPIVOT
+Covering index and composite index
+Clustered vs non-clustered index in SQL
+ACID properties and isolation levels
+User-defined functions vs stored procedures
+Cursors
+Updatable views and materialized views
+SQL injection and prevention
+GRANT and REVOKE
+Working with JSON data in SQL
+Top N per group queries
+Consecutive / gaps-and-islands problems
+Common SQL interview queries (department-wise max salary, employees without orders)

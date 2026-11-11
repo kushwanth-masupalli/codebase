@@ -1,0 +1,31 @@
+total 8640
+-rwxrwxrwx 1 the_robust_18 the_robust_18   62996 Jul 29 04:25 250_springboot_questions_with_answers.txt
+-rwxrwxrwx 1 the_robust_18 the_robust_18  105302 Jul 30 17:11 250_system_design_questions_with_answers.txt
+-rwxrwxrwx 1 the_robust_18 the_robust_18  386322 Oct 26 12:12 Capstone rp. pdf.pdf
+-rwxrwxrwx 1 the_robust_18 the_robust_18 1291182 Sep 30 09:05 Capstone.pdf
+drwxrwxrwx 1 the_robust_18 the_robust_18    4096 Aug  9 17:08 app
+-rwxrwxrwx 1 the_robust_18 the_robust_18 6269465 Jul 13 16:06 aws.docx
+drwxrwxrwx 1 the_robust_18 the_robust_18    4096 Nov  2 16:57 capstone
+drwxrwxrwx 1 the_robust_18 the_robust_18    4096 Sep 29 09:54 capstonescratch
+drwxrwxrwx 1 the_robust_18 the_robust_18    4096 Oct 19 03:09 codebase
+-rwxrwxrwx 1 the_robust_18 the_robust_18   24324 Aug 14 07:01 core_revision_tracker.html
+drwxrwxrwx 1 the_robust_18 the_robust_18    4096 Oct 29 12:52 cse_topics_final
+-rwxrwxrwx 1 the_robust_18 the_robust_18    8813 Jul 25 08:34 curr_postion.xlsx
+drwxrwxrwx 1 the_robust_18 the_robust_18    4096 Oct  7 11:35 demo
+-rwxrwxrwx 1 the_robust_18 the_robust_18     566 Sep  9 04:30 desktop.ini
+drwxrwxrwx 1 the_robust_18 the_robust_18    4096 Jul 20 10:11 do not open
+-rwxrwxrwx 1 the_robust_18 the_robust_18     356 Aug 18 15:36 dsa.txt
+-rwxrwxrwx 1 the_robust_18 the_robust_18   11181 Oct 30 13:47 env.xlsx
+-rwxrwxrwx 1 the_robust_18 the_robust_18    1115 Aug 26 05:01 intro.txt
+drwxrwxrwx 1 the_robust_18 the_robust_18    4096 May 31 12:59 java se 21
+drwxrwxrwx 1 the_robust_18 the_robust_18    4096 Jul 13 05:44 krittya
+-rwxrwxrwx 1 the_robust_18 the_robust_18   98124 Oct  2 11:27 kushwanths_resume_latest.pdf
+-rwxrwxrwx 1 the_robust_18 the_robust_18    3008 Aug 16 15:16 learn.sql
+-rwxrwxrwx 1 the_robust_18 the_robust_18  516357 Jul 14 01:32 maven.docx
+drwxrwxrwx 1 the_robust_18 the_robust_18    4096 Aug  3 10:10 p+projects
+drwxrwxrwx 1 the_robust_18 the_robust_18    4096 Aug  9 17:09 p_codebase
+drwxrwxrwx 1 the_robust_18 the_robust_18    4096 Oct 29 17:43 projects
+-rwxrwxrwx 1 the_robust_18 the_robust_18    1326 Nov  6 05:32 test.js
+drwxrwxrwx 1 the_robust_18 the_robust_18    4096 May 28 05:48 upfront
+-rwxrwxrwx 1 the_robust_18 the_robust_18   18212 Aug 14 18:09 weekday-routine.html
+-rwxrwxrwx 1 the_robust_18 the_robust_18   18212 Aug 14 18:09 weekday-routine.html

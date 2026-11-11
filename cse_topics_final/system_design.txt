@@ -1,0 +1,84 @@
+Scalability (horizontal vs vertical)
+Load balancing
+Caching
+Cache eviction policies (LRU, LFU)
+Database sharding
+Database replication
+CAP theorem
+Consistent hashing
+Microservices architecture
+Monolithic vs Microservices
+Message queues (Kafka, RabbitMQ)
+Pub-sub model
+Rate limiting
+API Gateway
+Content Delivery Network (CDN)
+SQL vs NoSQL database choice
+Proxy vs Reverse proxy
+Data partitioning
+Leader election
+Distributed consensus (Paxos, Raft)
+Fault tolerance
+High availability
+Latency vs Throughput
+Circuit breaker pattern
+Idempotency
+Eventual consistency vs Strong consistency
+Designing a URL shortener
+Designing a rate limiter
+Designing a chat application
+Designing a notification system
+Designing a news feed system
+Back-of-the-envelope estimation
+Single point of failure
+Data replication strategies (master-slave, master-master)
+Functional vs non-functional requirements
+SLA, SLO and SLI
+Availability and the "nines"
+Read replicas and write scaling
+Sharding strategies and hot partitions
+Cache patterns (cache-aside, write-through, write-back)
+Cache invalidation and cache stampede
+Redis and Memcached
+Bloom filter
+Gossip protocol and heartbeats
+Quorum (read/write quorum)
+Lamport and vector clocks
+Saga pattern and distributed transactions
+Two-phase commit vs Saga
+Distributed locks
+Unique ID generation (Snowflake, UUID)
+Event-driven architecture
+CQRS and Event Sourcing
+Service discovery
+Service mesh and sidecar pattern
+Load balancing algorithms (round robin, least connections, IP hash)
+Layer 4 vs Layer 7 load balancers
+Rate limiting algorithms (token bucket, leaky bucket, sliding window)
+Backpressure
+Retry with exponential backoff
+Dead letter queue
+Fan-out on write vs fan-out on read
+Push vs pull model
+REST vs GraphQL vs gRPC
+WebSockets, long polling and SSE
+Object storage (S3) and blob storage
+Search systems (inverted index, Elasticsearch)
+Observability (logging, metrics, tracing)
+Disaster recovery (RTO, RPO)
+Multi-region and geo-distribution
+Autoscaling
+Deployment strategies (blue-green, canary, rolling)
+Designing a key-value store
+Designing a distributed cache
+Designing a unique ID generator
+Designing a web crawler
+Designing search autocomplete (typeahead)
+Designing Twitter / Instagram
+Designing YouTube / Netflix
+Designing WhatsApp / Messenger
+Designing Uber / ride-sharing
+Designing Dropbox / Google Drive
+Designing a ticket booking system (BookMyShow)
+Designing a payment system
+Low-level design basics (parking lot, LRU cache, elevator)

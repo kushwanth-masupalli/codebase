@@ -1,0 +1,66 @@
+Arrays
+Strings
+Linked List (singly, doubly, circular)
+Stacks
+Queues
+Recursion
+Backtracking
+Sorting algorithms (merge sort, quick sort, heap sort)
+Searching (binary search and variations)
+Two pointers technique
+Sliding window technique
+Hashing / HashMaps
+Trees (binary tree, BST)
+Tree traversals (inorder, preorder, postorder, level order)
+Balanced trees (AVL, Red-Black)
+Heaps / Priority Queue
+Tries
+Graphs
+Graph traversals (BFS, DFS)
+Shortest path algorithms (Dijkstra, Bellman-Ford, Floyd-Warshall)
+Minimum spanning tree (Kruskal, Prim)
+Topological sort
+Union-Find / Disjoint Set
+Dynamic Programming
+Greedy algorithms
+Divide and conquer
+Bit manipulation
+Time and space complexity analysis
+Matrix problems
+Segment trees / Fenwick trees
+Prefix sum / difference array
+Kadane's algorithm (maximum subarray)
+Fast and slow pointers (Floyd's cycle detection)
+Reverse a linked list (iterative and recursive)
+Deque and circular queue
+Monotonic stack / monotonic queue
+Stack and queue applications (expression evaluation, next greater element)
+Binary search on answer
+Quick select (Kth largest element)
+Dutch national flag algorithm
+Stable vs unstable sorting
+Counting sort, radix sort, bucket sort
+Hash collisions (chaining, open addressing)
+Top K elements using heap
+Merge intervals / interval problems
+Subsets, permutations and combinations
+Knapsack problems (0/1, unbounded)
+Longest common subsequence / longest increasing subsequence
+Bitmask DP
+Lowest common ancestor
+Morris traversal
+Graph representations (adjacency list vs matrix)
+Cycle detection in graphs
+Bipartite graph check
+Strongly connected components (Kosaraju, Tarjan)
+A* search algorithm
+Number theory (GCD, sieve of Eratosthenes, modular arithmetic)
+Pattern matching (KMP, Rabin-Karp, Z-algorithm)
+Amortized analysis
+B-Tree and B+ Tree
+Skip list
+Bloom filter
+Sparse table
+LRU / LFU cache implementation
+Sorting algorithms (bubble, selection, insertion)
+Palindrome and anagram problems

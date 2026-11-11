@@ -1,0 +1,14 @@
+
+Hi, I’m Kushwanth, currently pursuing my B.Tech in Computer Science at VIT-AP University. I’m someone who enjoys solving problems and understanding how things work, which is what got me interested in software development and backend engineering.
+
+Over the past few years, I’ve worked mainly with Java, Spring Boot, databases, and deployement techologies . I’ve also gained practical experience through my internships, where I worked on backend applications involving REST APIs, microservices, and RAG-based AI systems. Alongside that, I’ve built projects like a URL shortener and a microservices-based library management system.
+
+I’m here because I want to take the experience I’ve gained through my projects and internships and apply it to real-world problems. I’m looking for an opportunity where I can learn from experienced people, contribute meaningfully, and grow into a strong software engineer.
+
+
+
+what would my day to day responsibilites look like in this role?	
+
+what kind of project would i be working on ?
+
+what skills are the most important to succeed in this position ?
